@@ -26,7 +26,7 @@ const steps = [
   },
 ];
     return(
-        <section className="container w-full px-4 md:px-10 py-16 lg:py-32 " >
+        <section id="process" className="container w-full px-4 md:px-10 py-16 lg:py-32 " >
           <div className="max-w-3xl mb-12 lg:mb-20 space-y-4 ">
            <span className="text-sm font-semibold tracking-wider uppercase text-muted-foreground ">PROCESS</span>
            <h2 className="text-4xl lg:text-5xl font-bold tracking-tight">How It Works</h2>

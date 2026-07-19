@@ -34,12 +34,12 @@ export default function Faq() {
 
   ]
   return (
-    <section className="flex flex-col py-20 gap-4  sm:py-40 sm:gap-20">
+    <section id="faq" className="flex flex-col py-20 gap-4 bg-card/85 sm:py-40 sm:gap-20">
       {/* Section Heading */}
       <div className="flex  md:justify-end  md:pr-10 gap-2 ">
         <div className="max-w-3xl px-4  mb-12 lg:mb-20 space-y-4">
         <span className="text-sm font-semibold lg:pl-2 tracking-wider uppercase text-muted-foreground">F.A.Q</span>
-        <h2 className="text-4xl lg:text-5xl font-bold ">Frequently Asked Questions</h2>
+        <h2 className="text-4xl lg:text-5xl font-bold  text-black">Frequently Asked Questions</h2>
 
         <p className="text-lg text-muted-foreground leading-relaxed">
           Answers to the most common questions about our services and how we
@@ -51,15 +51,15 @@ export default function Faq() {
       <div className="flex ">
         {/* Left Side */}
         <div className="hidden sm:flex flex-col  items-center sm:px-6  gap-8 sm:flex-1/2 ">
-          <h2 className="text-4xl lg:text-5xl font-bold  ">Let's Build Something Great Together</h2>
+          <h2 className="text-4xl lg:text-5xl font-bold text-black ">Let's Build Something Great Together</h2>
 
-          <p>
+          <p className="text-muted-foreground">
             Whether you're launching a startup, growing your business, or
             exploring AI automation, we're here to help. Tell us about your
             goals, and we'll recommend the right solution for your business.
           </p>
 
-          <Button className={'px-6 py-6'}>Book a Free Consultation</Button>
+          <Button className={'sm:py-6 sm:px-6'}>Book a Free Consultation</Button>
         </div>
 
         {/* Right Side */}
@@ -67,7 +67,7 @@ export default function Faq() {
           {faqs.map((faq, index)=>{
             const isOpen = openIdex  === index ;
             return (
-              <div key={faq.question} className="overflow-hidden rounded-xl  border-2">
+              <div key={faq.question} className="text-black overflow-hidden rounded-xl  border-2 border-foreground/40">
                <button
                 onClick={()=> setOpenIndex( isOpen ? null : index)}
                  className="flex w-full items-center justify-between p-4 text-left"

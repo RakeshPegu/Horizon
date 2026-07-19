@@ -1,7 +1,7 @@
 import {Button} from '@/components/ui/button'
 export default function Hero(){
     return(
-    <section className='py-40 md:py-0  md:h-screen pt-24 flex md:mb-40 '>
+    <section id='home' className='py-40 md:py-0  md:h-screen pt-24 flex md:mb-40 '>
       {/* left section */}
       <div className='flex flex-row md:py-30 '>
       <div className='flex-1/2 flex flex-col gap-8 pl-2 sm:pl-10'>
@@ -16,8 +16,8 @@ export default function Hero(){
            time and increase revenue.</p>
         </div>
         <div className='flex flex-row gap-4 pl-2 flex-wrap sm:gap-6'>
-        <Button className={'rounded-none  sm:py-6 sm:px-6'}>Book a Free consultation</Button>
-        <Button className={'rounded-none sm:py-6 sm:px-6'}> Explore our services</Button>        
+        <Button className={ 'sm:py-6 sm:px-6'}>Book a Free consultation</Button>
+        <Button className={'sm:py-6 sm:px-6'}> Explore our services</Button>        
        </div>
        </div>
        <div>

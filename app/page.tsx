@@ -3,6 +3,7 @@
 import About from "./components/About"
 import Faq from "./components/Faq"
 import Hero from "./components/Hero"
+import Portfolio from "./components/Portfolio"
 import Proccess from "./components/Process"
 import Service from "./components/Services"
 
@@ -14,6 +15,7 @@ export default function Home(){
     <Service/>
     <Proccess/>
     <Faq/>
+    <Portfolio/>
     </>
 
 
