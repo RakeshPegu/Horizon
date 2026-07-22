@@ -10,6 +10,7 @@ export default function QualificationForm({
   formState,
   handleFormState,
 }: HandleFormState) {
+
   return (
     <section
       className={`
@@ -116,7 +117,7 @@ export default function QualificationForm({
                     type="text"
                     placeholder="John Smith"
                     required
-                    className="rounded-xl border border-zinc-300 bg-zinc-50 px-4 py-3 text-zinc-900 placeholder:text-zinc-400 outline-none transition focus:border-zinc-900 focus:bg-white focus:ring-1 focus:ring-zinc-900"
+                    className="rounded-xl border border-zinc-300 bg-zinc-50 px-4 py-3 text-zinc-900 placeholder:text-zinc-400 outline-none transition  focus:bg-white focus:ring-1 "
                   />
                 </div>
 
@@ -133,7 +134,7 @@ export default function QualificationForm({
                     type="email"
                     placeholder="john@company.com"
                     required
-                    className="rounded-xl border border-zinc-300 bg-zinc-50 px-4 py-3 text-zinc-900 placeholder:text-zinc-400 outline-none transition focus:border-zinc-900 focus:bg-white focus:ring-1 focus:ring-zinc-900"
+                    className="rounded-xl border border-zinc-300 bg-zinc-50 px-4 py-3 text-zinc-900 placeholder:text-zinc-400 outline-none transition  focus:bg-white focus:ring-1 "
                   />
                 </div>
 
@@ -149,7 +150,7 @@ export default function QualificationForm({
                     id="organization"
                     type="text"
                     placeholder="Horizon"
-                    className="rounded-xl border border-zinc-300 bg-zinc-50 px-4 py-3 text-zinc-900 placeholder:text-zinc-400 outline-none transition focus:border-zinc-900 focus:bg-white focus:ring-1 focus:ring-zinc-900"
+                    className="rounded-xl border border-zinc-300 bg-zinc-50 px-4 py-3 text-zinc-900 placeholder:text-zinc-400 outline-none transition  focus:bg-white focus:ring-1 "
                   />
                 </div>
 
@@ -164,9 +165,9 @@ export default function QualificationForm({
                   <select
                     id="budget"
                     defaultValue=""
-                    className="rounded-xl border border-zinc-300 bg-zinc-50 px-4 py-3 text-zinc-900 outline-none transition focus:border-zinc-900 focus:bg-white focus:ring-1 focus:ring-zinc-900"
+                    className={`rounded-xl border border-zinc-300 bg-zinc-50 px-4 py-3 text-zinc-900 outline-none transition focus:border-none focus:bg-white focus:ring-1 focus:ring-zinc-900`}
                   >
-                    <option value="" disabled hidden>
+                    <option value=""  disabled hidden>
                       Select budget
                     </option>
                     <option value="1k-3k">$1k - $3k</option>
@@ -189,7 +190,7 @@ export default function QualificationForm({
                   id="need"
                   rows={4}
                   placeholder="Describe your website, AI solution, automation, or any ideas you'd like to discuss..."
-                  className="resize-none rounded-xl border border-zinc-300 bg-zinc-50 px-4 py-3 text-zinc-900 placeholder:text-zinc-400 outline-none transition focus:border-zinc-900 focus:bg-white focus:ring-1 focus:ring-zinc-900"
+                  className="resize-none rounded-xl border border-zinc-300 bg-zinc-50 px-4 py-3 text-zinc-900 placeholder:text-zinc-400 outline-none transition  focus:bg-white focus:ring-1 "
                 />
               </div>
 
@@ -209,7 +210,7 @@ export default function QualificationForm({
               </div>
 
               {/* Submit */}
-              <Button className="h-12 w-full rounded-xl text-base font-medium bg-zinc-900 text-white hover:bg-zinc-800 transition">
+              <Button className="h-12 w-full rounded-xl text-base font-medium bg-zinc-900  text-white hover:bg-zinc-800 transition ">
                 Continue to Schedule →
               </Button>
             </form>

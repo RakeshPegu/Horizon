@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { ClerkProvider, } from '@clerk/nextjs'
 import { Geist, Geist_Mono } from "next/font/google";
+import {MessageCircle} from 'lucide-react'
 import "./globals.css";
 import Navbar from "./layout/Navbar";
-import QualificationForm from "./card/QualificationForm";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,17 +37,18 @@ export default function RootLayout({
             <Navbar/>
     
           </header>
-          <div className="relative min-h-screen w-full overflow-x-hidden bg-neutral-950 text-neutral-100 ">
+          <div className="relative min-h-full w-full  overflow-hidden bg-neutral-950 text-neutral-100 ">
       
              {/*  Subtle Structural Tech Grid */}
-             <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-size-[24px_24px] pointer-events-none" />
+             <div className="absolute  inset-0  bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-size-[24px_24px] pointer-events-none" />
 
              {/*  Soft Ambient Blur Effect (Behind Content) */}
              <div className="absolute top-[-10%] left-[-10%] h-125 w-125 rounded-full bg-amber-500/10 blur-[120px] pointer-events-none" />
              <div className="absolute top-[20%] right-[-10%] h-150 w-150 rounded-full bg-indigo-500/5 blur-[150px] pointer-events-none" />
 
             {/* Page Content */}
-            <main className="relative z-10 pt-16">
+            <main className="relative z-10">
+              <div className="flex items-center justify-center w-10 h-10 fixed bottom-10 right-10 z-50 cursor-pointer"><a href="https://wa.me/919387356020?text=Hi%20Rakesh,%20I%20want%20to%20book%20a%20consultation" target="_blank" rel="nopener noreferrer"><MessageCircle className="text-accent "/></a></div>
                {children}
             </main>
           </div>          

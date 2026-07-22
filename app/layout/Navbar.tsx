@@ -14,7 +14,7 @@ export default function Navbar() {
     { name: "Home", id:"home" },
     { name: "Services", id:"service" }, 
     { name: "Case Studies", id:'case-studies' },
-    {name:"Feature Work", id:'portfolio'},
+    {name:"Featured Works", id:'portfolio'},
     {name:'Process', id:"process"},
     { name: "About", id:"about" },
     {name:"FAQ", id:"faq"}
