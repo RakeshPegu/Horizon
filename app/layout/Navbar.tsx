@@ -29,7 +29,7 @@ export default function Navbar() {
   }
 
   return (
-    <nav className='flex flex-row  items-center fixed backdrop-blur-md top-0 left-0 z-50 text w-full justify-between px-12 h-16 shadow-md'>
+    <nav className='flex flex-row bg-background  items-center fixed backdrop-blur-md top-0 left-0 z-50 text w-full justify-between px-12 h-16 shadow-md'>
       {/* Brand Logo */}
       <div className='relative right-10 md:right-0 font-bold text-xl tracking-wider '>
         <span><a href='/'>HORIZON</a></span>
@@ -45,7 +45,7 @@ export default function Navbar() {
       </ul>
 
       <div className='hidden lg:flex justify-center'>
-        <Button className={'bg-transparent border rounded-2xl p-4 border-primary-foreground hover:bg-transparent cursor-pointer shadow-md hover:shadow-blue-100'}>Book Consultation</Button>
+        <Button className={'bg-transparent border-2 p-4 border-primary-foreground hover:bg-transparent ring-0 cursor-pointer shadow-md hover:shadow-blue-100'}>Book Consultation</Button>
       </div>
       
 

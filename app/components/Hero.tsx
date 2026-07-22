@@ -1,5 +1,12 @@
 import {Button} from '@/components/ui/button'
-export default function Hero(){
+type HeroType = {
+  handleFormState: ()=>void
+}
+export default function Hero({handleFormState}: HeroType){
+    const handleExploreServiceBtnClick =()=>{
+      document.getElementById('service')?.scrollIntoView({behavior:'smooth'})
+
+    }
     return(
     <section id='home' className='py-40 md:py-0  md:h-screen pt-24 flex md:mb-40 '>
       {/* left section */}
@@ -16,8 +23,8 @@ export default function Hero(){
            time and increase revenue.</p>
         </div>
         <div className='flex flex-row gap-4 pl-2 flex-wrap sm:gap-6'>
-        <Button className={ 'sm:py-6 sm:px-6'}>Book a Free consultation</Button>
-        <Button className={'sm:py-6 sm:px-6'}> Explore our services</Button>        
+        <Button className={ 'sm:py-6 sm:px-6'} onClick={()=>handleFormState()}>Book a Free consultation</Button>
+        <Button className={'sm:py-6 sm:px-6'} onClick={()=>handleExploreServiceBtnClick()}> Explore our services</Button>        
        </div>
        </div>
        <div>

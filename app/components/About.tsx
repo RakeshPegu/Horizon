@@ -1,8 +1,10 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Check, ArrowRight, Rocket, Building2, TrendingUp } from "lucide-react";
-
-export default function About() {
+type AboutType = {
+  handleFormState: ()=> void
+}
+export default function About({handleFormState}:AboutType) {
   const businessTypes = [
     {
       title: "Startups",
@@ -70,7 +72,7 @@ export default function About() {
           </div>
           
           <div className="pt-4 hidden lg:block">
-            <Button size="lg" className="font-semibold px-6 py-6 group transition-all cursor-pointer border-none  ">
+            <Button size="lg" className="font-semibold px-6 py-6 group transition-all cursor-pointer border-none  " onClick={()=>handleFormState()}>
               Contact us
               <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
             </Button>
@@ -129,7 +131,7 @@ export default function About() {
 
         {/* Mobile-only CTA button */}
         <div className="w-full flex justify-center lg:hidden pt-4">
-          <Button size="lg" className="w-full font-semibold py-6 ">
+          <Button size="lg" className="w-full font-semibold py-6 " >
             Contact us
           </Button>
         </div>

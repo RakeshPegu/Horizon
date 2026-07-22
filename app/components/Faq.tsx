@@ -1,9 +1,11 @@
 import { Button } from "@/components/ui/button";
 import {ChevronDown} from 'lucide-react'
 import { useState } from "react";
-import { FaF } from "react-icons/fa6";
+type FaqTypes ={
+  handleFormState : ()=> void
+}
 
-export default function Faq() {
+export default function Faq({handleFormState}:FaqTypes) {
   const [openIdex, setOpenIndex]  = useState<number|null>(0)
   const faqs =[
     {
@@ -59,7 +61,7 @@ export default function Faq() {
             goals, and we'll recommend the right solution for your business.
           </p>
 
-          <Button className={'sm:py-6 sm:px-6'}>Book a Free Consultation</Button>
+          <Button className={'sm:py-6 sm:px-6'} onClick={()=>handleFormState()}>Book a Free Consultation</Button>
         </div>
 
         {/* Right Side */}

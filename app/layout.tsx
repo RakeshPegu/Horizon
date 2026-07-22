@@ -3,6 +3,7 @@ import { ClerkProvider, } from '@clerk/nextjs'
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./layout/Navbar";
+import QualificationForm from "./card/QualificationForm";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,6 +25,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <html
       lang="en"
@@ -46,7 +48,7 @@ export default function RootLayout({
 
             {/* Page Content */}
             <main className="relative z-10 pt-16">
-             {children}
+               {children}
             </main>
           </div>          
         </ClerkProvider>

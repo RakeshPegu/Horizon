@@ -8,7 +8,7 @@ export default function Portfolio() {
       image: "./serene.png", // Kept local path dynamic if needed later
       description: "Built for a dental clinic to establish a modern online presence, stream-lining booking workflows.",
       techs: ['React.js', 'TypeScript', 'Express.js', 'OAuth 2.0', 'TailwindCSS', 'MongoDB'],
-      liveLink: "#",
+      liveLink: "https://dental-clinic-website-zeta-opal.vercel.app/",
       caseStudyLink: "#"
     },
     {
