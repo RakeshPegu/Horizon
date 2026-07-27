@@ -1,6 +1,9 @@
+"use client"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import {Clock, Video, MessageCircle} from 'lucide-react'
+import Cal, { getCalApi } from "@calcom/embed-react";
+import { useEffect } from "react";
 
 export default function BookingConsultation(){
     const options = [
@@ -14,27 +17,39 @@ export default function BookingConsultation(){
             description:"Join from any device"
         }
     ]
+    useEffect(() => {
+    (async function () {
+      const cal = await getCalApi({"namespace":"quick-chat"});
+      cal("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+    })();
+  }, [])
     return(
-        <section className="flex justify-center pt-6">
-            <Card className="flex justify-center  w-[80%] gap-12 py-14 ">
+        <section className="flex  justify-center pt-6 gap-4 ">
+            <Card className="flex justify-center w-[70%] gap-10 ml-4 ">
                 <CardHeader className="flex flex-col items-center gap-2">
                     <CardTitle className="text-3xl"> Book a free 20-minute consultation  </CardTitle>
                     <CardContent className="text-lg">Tell me about your project and pick a time that works for you</CardContent>
                 </CardHeader>
-                <CardContent className="flex flex-col items-center gap-4">
+                <CardContent className="flex flex-col items-center gap-10">
                     <div className="flex gap-4">
-                       {options.map((option, index)=>(
+                       {options.map((option, index)=>( 
                         <div className="rounded-2xl flex flex-col gap-2 items-center md:px-14 ring-1 p-4">
                             <span><option.icon className="text-blue-600"/> </span>
                             <h3 className="text-xl font-bold">{option.time}</h3>
                             <p>{option.description}</p>
                         </div>
                        ))}
-                    </div>
-                  <Button className="h-12 w-[45%] mt-6 rounded-xl text-base font-medium bg-zinc-900  text-white hover:bg-zinc-800 transition ">  Book a consultation →   </Button>
-                    <div className="flex justify-center items-center gap-4 text-lg"><MessageCircle className="text-accent"/><p>Prefer WhatsApp first? <strong className="hover:underline pl-2 cursor-pointer "> Chat before booking </strong></p></div>
+                    </div>                  
+                    <div className="flex justify-center items-center gap-4 text-lg" ><MessageCircle className="text-accent"/><p>Prefer WhatsApp first? <strong className="hover:underline pl-2 cursor-pointer "> Chat before booking </strong></p></div>
                 </CardContent>
             </Card>
+            <Cal namespace="quick-chat"
+              calLink="rakesh-pegu-rr1epu/quick-chat"
+              style={{width:"100%",height:"100%",}}
+              className="overflow-hidden bg-white rounded-2xl"
+              config={{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}}   
+              />;
+
 
 
         </section>

@@ -10,6 +10,9 @@ export default function QualificationForm({
   formState,
   handleFormState,
 }: HandleFormState) {
+  const handleQualiForm =()=>{
+    console.log('triggered handle qualiform')
+  }
 
   return (
     <section
@@ -210,7 +213,7 @@ export default function QualificationForm({
               </div>
 
               {/* Submit */}
-              <Button className="h-12 w-full rounded-xl text-base font-medium bg-zinc-900  text-white hover:bg-zinc-800 transition ">
+              <Button className="h-12 w-full rounded-xl text-base font-medium bg-zinc-900  text-white hover:bg-zinc-800 transition " type="submit">
                 Continue to Schedule →
               </Button>
             </form>
