@@ -35,8 +35,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <ClerkProvider>
           <ClientLayout>
-
-          <div className="relative min-h-full w-full  overflow-hidden bg-neutral-950 text-neutral-100 ">
+           <div className="relative min-h-full w-full  overflow-hidden bg-neutral-950 text-neutral-100 ">
       
              {/*  Subtle Structural Tech Grid */}
              <div className="absolute  inset-0  bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-size-[24px_24px] pointer-events-none" />
