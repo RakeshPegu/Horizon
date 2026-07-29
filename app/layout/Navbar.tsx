@@ -13,7 +13,6 @@ export default function Navbar() {
   const menuLinks = [
     { name: "Home", id:"home" },
     { name: "Services", id:"service" }, 
-    { name: "Case Studies", id:'case-studies' },
     {name:"Featured Works", id:'portfolio'},
     {name:'Process', id:"process"},
     { name: "About", id:"about" },
@@ -27,6 +26,10 @@ export default function Navbar() {
   const handleMenuState = ()=>{
     setShowMenu((prev)=> !prev)
   }
+  const handleFormState = ()=>{
+
+
+  }
 
   return (
     <nav className='flex flex-row bg-background  items-center fixed backdrop-blur-md top-0 left-0 z-50 text w-full justify-between px-12 h-16 shadow-md'>
@@ -36,7 +39,7 @@ export default function Navbar() {
       </div>
 
       {/* Navigation Links */}
-      <ul className='flex-row items-center gap-8 hidden md:flex '>
+      <ul className='flex-row items-center gap-10 hidden md:flex '>
         {menuLinks.map((link, indx) => (
           <li key={indx} className='font-medium  transition-colors duration-200 cursor-pointer' onClick={()=>handleClick(link?.id!)}>
             {link.name}
@@ -44,13 +47,16 @@ export default function Navbar() {
         ))}
       </ul>
 
-      <div className='hidden lg:flex justify-center'>
-        <Button className={'bg-transparent border-2 p-4 border-primary-foreground hover:bg-transparent ring-0 cursor-pointer shadow-md hover:shadow-blue-100'}>Book Consultation</Button>
-      </div>
+      {/* <div className='hidden lg:flex justify-center'>
+        <Button className={'bg-transparent border-2 p-4 border-primary-foreground hover:bg-transparent ring-0 cursor-pointer shadow-md hover:shadow-blue-100'} 
+        >
+          Book Consultation
+        </Button>
+      </div> */}
       
 
       {/* Auth Section */}
-      <div className='hidden md:flex flex-row  items-center gap-10'>
+      <div className='hidden md:flex flex-row  items-center gap-10 md:gap-16'>
         <Show when="signed-out">
           <SignInButton mode="modal">
             <button className=" font-medium  transition-colors cursor-pointer">
@@ -69,6 +75,7 @@ export default function Navbar() {
         <Show when="signed-in">
           <a 
             className="text-white bg-primary  font-serif rounded-full font-medium text-sm py-2 px-4 flex items-center justify-center  transition-all cursor-pointer"
+            href='/track_project/1'
            >
              Track Your project
            </a>

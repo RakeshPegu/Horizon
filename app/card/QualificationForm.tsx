@@ -1,6 +1,8 @@
+"use client"
 import { Button } from "@/components/ui/button";
 import { X } from "lucide-react";
-
+import { useRouter } from "next/navigation";
+import React, {useState } from "react";
 type HandleFormState = {
   formState: boolean;
   handleFormState: () => void;
@@ -10,16 +12,35 @@ export default function QualificationForm({
   formState,
   handleFormState,
 }: HandleFormState) {
-  const handleQualiForm =()=>{
-    console.log('triggered handle qualiform')
-  }
+  const router = useRouter()
+  const [formDetail, setFormDetail] = useState({name: '', email: '', company:'', budget:'' , description:""})
 
+  const handleQualiForm = async(e:React.FormEvent<HTMLFormElement>)=>{
+    e.preventDefault()
+    console.log("this is formData", formDetail)
+    const response = await fetch('/api/qualification', {
+      method:"POST",
+      headers: {
+        'Content-Type':" application/json"
+      },
+      body: JSON.stringify({
+        formDetail
+
+      })
+    }
+
+    ) 
+    console.log('this is the response', response)
+    router.push('/booking_consultation')
+    
+  }
+ 
   return (
     <section
       className={`
         fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 lg:p-8
         bg-black/70 backdrop-blur-sm
-        transition-all duration-500 ease-in-out
+        transition-all duration-200 ease-in-out
         ${
           formState
             ? "opacity-100 pointer-events-auto"
@@ -105,7 +126,7 @@ export default function QualificationForm({
 
           {/* Right Side (Form) */}
           <div className="flex items-center justify-center p-6 sm:p-8 lg:p-10 bg-white">
-            <form className="w-full max-w-xl space-y-5 sm:space-y-6" onSubmit={(e) => e.preventDefault()}>
+            <form className="w-full max-w-xl space-y-5 sm:space-y-6" onSubmit={handleQualiForm}>
               <div className="grid gap-5 sm:grid-cols-2">
                 {/* Name */}
                 <div className="flex flex-col gap-2">
@@ -118,6 +139,7 @@ export default function QualificationForm({
                   <input
                     id="name"
                     type="text"
+                    onChange={(e)=>{setFormDetail({...formDetail, name:e.currentTarget.value})}}
                     placeholder="John Smith"
                     required
                     className="rounded-xl border border-zinc-300 bg-zinc-50 px-4 py-3 text-zinc-900 placeholder:text-zinc-400 outline-none transition  focus:bg-white focus:ring-1 "
@@ -136,6 +158,7 @@ export default function QualificationForm({
                     id="email"
                     type="email"
                     placeholder="john@company.com"
+                    onChange={(e)=>{setFormDetail({...formDetail,  email:e.currentTarget.value})}}
                     required
                     className="rounded-xl border border-zinc-300 bg-zinc-50 px-4 py-3 text-zinc-900 placeholder:text-zinc-400 outline-none transition  focus:bg-white focus:ring-1 "
                   />
@@ -153,6 +176,7 @@ export default function QualificationForm({
                     id="organization"
                     type="text"
                     placeholder="Horizon"
+                    onChange={(e)=>{setFormDetail({...formDetail, company:e.currentTarget.value})}}
                     className="rounded-xl border border-zinc-300 bg-zinc-50 px-4 py-3 text-zinc-900 placeholder:text-zinc-400 outline-none transition  focus:bg-white focus:ring-1 "
                   />
                 </div>
@@ -168,6 +192,7 @@ export default function QualificationForm({
                   <select
                     id="budget"
                     defaultValue=""
+                    onChange={(e)=>{setFormDetail({...formDetail, budget:e.currentTarget.value})}}
                     className={`rounded-xl border border-zinc-300 bg-zinc-50 px-4 py-3 text-zinc-900 outline-none transition focus:border-none focus:bg-white focus:ring-1 focus:ring-zinc-900`}
                   >
                     <option value=""  disabled hidden>
@@ -192,6 +217,7 @@ export default function QualificationForm({
                 <textarea
                   id="need"
                   rows={4}
+                  onChange={(e)=>{setFormDetail({...formDetail, description:e.currentTarget.value})}}
                   placeholder="Describe your website, AI solution, automation, or any ideas you'd like to discuss..."
                   className="resize-none rounded-xl border border-zinc-300 bg-zinc-50 px-4 py-3 text-zinc-900 placeholder:text-zinc-400 outline-none transition  focus:bg-white focus:ring-1 "
                 />
@@ -213,7 +239,9 @@ export default function QualificationForm({
               </div>
 
               {/* Submit */}
-              <Button className="h-12 w-full rounded-xl text-base font-medium bg-zinc-900  text-white hover:bg-zinc-800 transition " type="submit">
+              <Button className="h-12 w-full rounded-xl text-base font-medium bg-zinc-900  text-white hover:bg-zinc-800 transition "
+               type="submit" 
+                >
                 Continue to Schedule →
               </Button>
             </form>
