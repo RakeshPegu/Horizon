@@ -1,6 +1,9 @@
-import React from "react";
+"use client"
+import { usePathname, useRouter } from "next/navigation";
 
 export default function Footer() {
+  const pathName = usePathname()
+  const router = useRouter()
   const footerData = {
     brand: {
       name: "HorizonLab",
@@ -55,7 +58,20 @@ export default function Footer() {
     },
     copyright: `© ${new Date().getFullYear()} HorizonLab. All rights reserved.`,
   };
+ 
+  const handleClickMenuOption = (id:string)=>{
+    if(pathName === '/'){
+        document.getElementById(id)?.scrollIntoView({behavior:"smooth"})
+    }
+    router.push('/')
+    const timer = setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({behavior:'smooth'})
+        
+    }, 500);
+    return ()=>clearTimeout(timer)
+     
 
+  }
   return (
     <footer className="bg-zinc-950 text-zinc-300 border-t border-zinc-800 font-sans">
       <div className="max-w-7xl mx-auto px-6 py-12 lg:py-16">
@@ -94,13 +110,11 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2.5 text-sm">
               {footerData.navigation.map((item) => (
-                <li key={item.id}>
-                  <a
-                    href={`#${item.id}`}
-                    className="text-zinc-400 hover:text-white transition-colors duration-200"
-                  >
-                    {item.name}
-                  </a>
+                <li key={item.id}
+                  className="text-zinc-400 cursor-pointer hover:text-white transition-colors duration-200"
+                  onClick={()=>handleClickMenuOption(item.id)}
+                >
+                 {item.name}                
                 </li>
               ))}
             </ul>
