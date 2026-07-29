@@ -9,7 +9,7 @@ export default function Portfolio() {
       description: "Built for a dental clinic to establish a modern online presence, stream-lining booking workflows.",
       techs: ['React.js', 'TypeScript', 'Express.js', 'OAuth 2.0', 'TailwindCSS', 'MongoDB'],
       liveLink: "https://dental-clinic-website-zeta-opal.vercel.app/",
-      caseStudyLink: "#"
+      caseStudyLink: "/project/1"
     },
     {
       title: "AutoRes",
@@ -17,7 +17,7 @@ export default function Portfolio() {
       description: "An AI-powered customer support automation engine tailored for scaling SaaS companies.",
       techs: ['Next.js', 'TailwindCSS', 'TypeScript', 'OpenAI API'],
       liveLink: "#",
-      caseStudyLink: "#"
+      caseStudyLink: "/project/2"
     },
   ]
 
