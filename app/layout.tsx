@@ -5,6 +5,7 @@ import {MessageCircle} from 'lucide-react'
 import "./globals.css";
 import Navbar from "./layout/Navbar";
 import ClientLayout from "./clientLayout";
+import Footer from "./layout/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -54,6 +55,7 @@ export default function RootLayout({
               </div>
                {children}
             </main>
+            <Footer/>
           </div>     
           </ClientLayout>     
         </ClerkProvider>
