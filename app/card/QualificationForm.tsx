@@ -14,9 +14,12 @@ export default function QualificationForm({
 }: HandleFormState) {
   const router = useRouter()
   const [formDetail, setFormDetail] = useState({name: '', email: '', company:'', budget:'' , description:""})
+  const [isDisabled, setIsDisabled] = useState(false)
 
   const handleQualiForm = async(e:React.FormEvent<HTMLFormElement>)=>{
-    e.preventDefault()
+    try {
+      setIsDisabled(true)
+     e.preventDefault()
     console.log("this is formData", formDetail)
     const response = await fetch('/api/qualification', {
       method:"POST",
@@ -30,8 +33,20 @@ export default function QualificationForm({
     }
 
     ) 
-    console.log('this is the response', response)
-    router.push('/booking_consultation')
+    const result = await response.json()
+    console.log('this is result', result)
+    if(result.success === true){
+      router.push(`/booking_consultation/${result.userId}`)
+    }
+      
+    } catch (error) {
+      setIsDisabled(false)
+      
+    }finally{
+      setIsDisabled(false)
+    }
+
+    
     
   }
  
@@ -239,8 +254,10 @@ export default function QualificationForm({
               </div>
 
               {/* Submit */}
-              <Button className="h-12 w-full rounded-xl text-base font-medium bg-zinc-900  text-white hover:bg-zinc-800 transition "
+              <Button className={`h-12 w-full rounded-xl text-base font-medium bg-zinc-900  ${isDisabled ? 'cursor-not-allowed':'cursor-pointer' } text-white hover:bg-zinc-800 transition `}
                type="submit" 
+                disabled={isDisabled}               
+               
                 >
                 Continue to Schedule →
               </Button>

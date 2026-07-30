@@ -41,14 +41,14 @@ export default function Navbar() {
   }
 
   return (
-    <nav className='flex flex-row bg-background  items-center fixed backdrop-blur-md top-0 left-0 z-50 text w-full justify-between px-12 h-16 shadow-md'>
+    <nav className='flex flex-row   items-center fixed backdrop-blur-md top-0 left-0 z-50 text w-full justify-between px-20 md:px-4 lg:px-12 h-16 shadow-md'>
       {/* Brand Logo */}
       <div className='relative right-10 md:right-0 font-bold text-xl tracking-wider '>
         <span><a href='/'>HORIZON</a></span>
       </div>
 
       {/* Navigation Links */}
-      <ul className='flex-row items-center gap-10 hidden md:flex '>
+      <ul className='flex-row items-center gap-6 lg:gap-10 hidden md:flex '>
         {menuLinks.map((link, indx) => (
           <li key={indx} className='font-medium  transition-colors duration-200 cursor-pointer' onClick={()=>handleClick(link?.id!)}>
             {link.name}
@@ -65,7 +65,7 @@ export default function Navbar() {
       
 
       {/* Auth Section */}
-      <div className='hidden md:flex flex-row  items-center gap-10 md:gap-16'>
+      <div className='hidden md:flex flex-row  items-center gap-6 lg:gap-16'>
         <Show when="signed-out">
           <SignInButton mode="modal">
             <button className=" font-medium  transition-colors cursor-pointer">
@@ -83,7 +83,7 @@ export default function Navbar() {
       
         <Show when="signed-in">
           <a 
-            className="text-white bg-primary  font-serif rounded-full font-medium text-sm py-2 px-4 flex items-center justify-center  transition-all cursor-pointer"
+            className="text-white bg-primary  font-serif rounded-full font-medium text-sm py-2 px-2 lg:px-4 flex items-center justify-center  transition-all cursor-pointer"
             href='/track_project/1'
            >
              Track Your project

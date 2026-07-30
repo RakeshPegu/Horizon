@@ -3,7 +3,6 @@ import { ClerkProvider, } from '@clerk/nextjs'
 import { Geist, Geist_Mono } from "next/font/google";
 import {MessageCircle} from 'lucide-react'
 import "./globals.css";
-import Navbar from "./layout/Navbar";
 import ClientLayout from "./clientLayout";
 import Footer from "./layout/Footer";
 

@@ -10,11 +10,9 @@ import {
 
 export default function CaseStudy() {
   return (
-    <main className="bg-white text-gray-900">
-
-      {/* Hero */}
+    <main className="bg-gray-200 md:pb-40 text-gray-900">
       <section className="max-w-7xl mx-auto px-6 py-24">
-        <span className="text-blue-600 font-semibold uppercase tracking-widest">
+        <span className="text-muted-foreground font-semibold uppercase tracking-widest">
           Case Study
         </span>
 
@@ -54,7 +52,7 @@ export default function CaseStudy() {
           </div>
         </div>
 
-        <div className="mt-16 h-[550px] rounded-3xl bg-gray-200 flex items-center justify-center">
+        <div className="mt-16 h-137.5 rounded-3xl bg-gray-400 flex items-center justify-center">
           Project Screenshot
         </div>
       </section>

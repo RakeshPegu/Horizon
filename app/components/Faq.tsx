@@ -50,7 +50,7 @@ export default function Faq({handleFormState}:FaqTypes) {
         </div>
       </div>
 
-      <div className="flex ">
+      <div className="flex flex-col gap-30 md:gap-0 md:flex-row ">
         {/* Left Side */}
         <div className="hidden sm:flex flex-col  items-center sm:px-6  gap-8 sm:flex-1/2 ">
           <h2 className="text-4xl lg:text-5xl font-bold text-black ">Let's Build Something Great Together</h2>

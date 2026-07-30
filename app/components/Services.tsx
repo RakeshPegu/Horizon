@@ -130,9 +130,9 @@ export default function Service() {
 
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {services[activeTab].features.map((feature, index) => (
-                <li key={index} className="flex items-center text-slate-800
+                <li key={index} className="flex items-center  text-slate-800
                    gap-3 text-sm font-semibold">
-                  <CircleCheck className="w-5 h-5 text-accent shrink-0 fill-slate-900/10" />
+                  <CircleCheck className="w-5 h-5  text-accent shrink-0" />
                   <span>{feature}</span>
                 </li>
               ))}

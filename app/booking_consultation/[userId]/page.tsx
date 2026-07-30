@@ -4,11 +4,12 @@ import {useAuth, useClerk} from '@clerk/nextjs'
 import {Clock, Video, MessageCircle} from 'lucide-react'
 import Cal, { getCalApi } from "@calcom/embed-react";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import {Spinner} from '@/components/ui/spinner'
 
 
 export default function BookingConsultation(){
+    const params = useParams()
     const router = useRouter()
     const {isSignedIn, isLoaded}  = useAuth()
      const {openSignIn} = useClerk();
@@ -76,9 +77,9 @@ export default function BookingConsultation(){
   }
     return(
               
-        <section className="relative  flex justify-center gap-4 "> 
+        <section className="relative my-10 flex justify-center gap-4 "> 
  
-           <Card className="hidden md:flex justify-center md:flex-1/3 py- gap-20 ">                
+           <Card className="hidden   lg:flex justify-center lg:flex-1/3 py- gap-20 ">                
                 <CardHeader className="flex flex-col items-center gap-2">
                     <CardTitle className="text-3xl"> Book a free 20-minute consultation  </CardTitle>
                     <CardContent className="text-lg">Tell me about your project and pick a time that works for you</CardContent>
