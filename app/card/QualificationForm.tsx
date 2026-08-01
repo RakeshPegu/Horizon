@@ -13,7 +13,7 @@ export default function QualificationForm({
   handleFormState,
 }: HandleFormState) {
   const router = useRouter()
-  const [formDetail, setFormDetail] = useState({name: '', email: '', company:'', budget:'' , description:""})
+  const [formDetail, setFormDetail] = useState({name: '', email: '', company:'', budget:'' , description:"", isAgreed:false })
   const [isDisabled, setIsDisabled] = useState(false)
 
   const handleQualiForm = async(e:React.FormEvent<HTMLFormElement>)=>{
@@ -243,6 +243,8 @@ export default function QualificationForm({
                 <input
                   id="agree"
                   type="checkbox"
+                  required
+                  onChange={()=>{setFormDetail({...formDetail, isAgreed:true})}}
                   className="mt-1 h-4 w-4 rounded border-zinc-300 text-zinc-900 focus:ring-zinc-900 cursor-pointer"
                 />
                 <label

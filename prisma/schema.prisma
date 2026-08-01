@@ -28,6 +28,7 @@ model Qualification{
   description String
   userId     String @unique
   status  BookingStatus @default(pending) 
+  isAgreed Boolean 
   user    User @relation(fields: [userId], references: [id])
   createdAt DateTime @default(now())
 

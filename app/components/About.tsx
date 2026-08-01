@@ -9,11 +9,9 @@ export default function About({handleFormState}:AboutType) {
     {
       title: "Startups",
       description: "Build your first product",
-      icon: Rocket,
       accentColor: "from-sky-500/20 to-blue-600/5",
       borderColor: "hover:border-sky-500/40",
-      textColor: "group-hover:text-sky-400",
-      iconColor: "text-sky-400 bg-sky-500/10 border-sky-500/20",
+      textColor: "group-hover:text-sky-400",      
       services: [
         "MVP Development",
         "SaaS Platforms",
@@ -24,11 +22,9 @@ export default function About({handleFormState}:AboutType) {
     {
       title: "Small Businesses",
       description: "Modernize your operations",
-      icon: Building2,
       accentColor: "from-emerald-500/20 to-teal-600/5",
       borderColor: "hover:border-emerald-500/40",
       textColor: "group-hover:text-emerald-400",
-      iconColor: "text-emerald-400 bg-emerald-500/10 border-emerald-500/20",
       services: [
         "Business Websites",
         "Customer Portals",
@@ -39,11 +35,9 @@ export default function About({handleFormState}:AboutType) {
     {
       title: "Growing Companies",
       description: "Scale confidently",
-      icon: TrendingUp,
       accentColor: "from-violet-500/20 to-purple-600/5",
       borderColor: "hover:border-violet-500/40",
       textColor: "group-hover:text-violet-400",
-      iconColor: "text-violet-400 bg-violet-500/10 border-violet-500/20",
       services: [
         "Process Automation",
         "System Integration",
@@ -82,7 +76,7 @@ export default function About({handleFormState}:AboutType) {
         {/* Right Column (Asymmetric Interactive Bento Grid) */}
         <div className="w-full lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4 auto-rows-fr">
           {businessTypes.map((businessType, index) => {
-            const Icon = businessType.icon;
+            
             // The last item spans full width on desktop grids to create layout asymmetry
             const isFullWidth = index === 2;
 
@@ -104,17 +98,14 @@ export default function About({handleFormState}:AboutType) {
                         {businessType.description}
                       </CardDescription>
                     </div>
-                    {/* Semantic Icon Header Container */}
-                    <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border transition-transform duration-500 group-hover:scale-110 ${businessType.iconColor}`}>
-                      <Icon className="w-5 h-5" />
-                    </div>
+
                   </CardHeader>
                   
                   <CardContent className="p-6 pt-0 relative z-10">
                     <ul className={`grid gap-2.5 ${isFullWidth ? 'grid-cols-1 sm:grid-cols-2' : 'grid-cols-1'}`}>
                       {businessType.services.map((service, indx) => (
                         <li key={indx} className="flex items-center gap-3 text-sm text-neutral-400 transition-colors duration-300 group-hover:text-neutral-300">
-                          <Check className="w-4 h-4 text-neutral-600 shrink-0 transition-colors duration-300 group-hover:text-neutral-400" />
+                          <Check className="w-4 h-4 text-accent shrink-0 transition-colors duration-300 " />
                           <span>{service}</span>
                         </li>
                       ))}

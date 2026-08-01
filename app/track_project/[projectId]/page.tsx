@@ -233,15 +233,24 @@ export default function TrackProject() {
           </CardHeader>
 
           <CardContent className="flex flex-wrap  gap-4">
-            <Button className={'bg-green-500 cursor-pointer px-4'}>
+            <Button className={ 'bg-green-500 px-4 cursor-pointer'}>
+              <a href="https://wa.me/919387356020?text=Hi%20Rakesh,%20I%20want%20to%20book%20a%20consultation" 
+                target="_blank" rel="nopener noreferrer"
+                className="flex items-center gap-2"
+                >
               <MessageCircle className=" h-4 w-4" />
               WhatsApp
+              </a>
             </Button>
 
-            <Button className="px-4 cursor-pointer" >
+            
+              <a href="mailto:rpegu0651@gmail.com?subject=Booking%20Consultation&body=Hi,%20I'd%20like%20to%20book%20a%20consultation."
+              className="flex items-center gap-2"
+              >
               <Mail className="h-4 w-4" />
               Email
-            </Button>
+              </a>              
+            
           </CardContent>
         </Card>
       </div>

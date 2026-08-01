@@ -81,7 +81,7 @@ export default function Portfolio() {
               </div>
 
               {/* Action Links */}
-              <div className="flex items-center  gap-20 pt-4 mt-auto border-t border-border/50">
+              <div className="flex items-center gap-20 md:gap-10 lg:gap-20 pt-4 mt-auto border-t border-border/50">
                 <Button 
                   variant={'default'}                  
                   size="sm"

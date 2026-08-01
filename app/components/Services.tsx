@@ -14,7 +14,7 @@ export default function Service() {
         "Web portals",
         "E-commerce",
       ],
-      icon: Globe
+      
     },
     {
       title: "Business Automation",
@@ -25,7 +25,7 @@ export default function Service() {
         "Data processing",
         "Internal tools",
       ],
-      icon: Workflow
+      
     },
     {
       title: "AI Solutions",
@@ -36,7 +36,7 @@ export default function Service() {
         "Document analysis",
         "AI search systems",
       ],
-      icon: Bot
+      
     },
     {
       title: "Custom Software Development",
@@ -47,11 +47,11 @@ export default function Service() {
         "Dashboards",
         "Mobile apps",
       ],
-      icon: Code2
+      
     },
   ];
 
-  const ActiveIcon = services[activeTab].icon;
+
 
   return (
     <section id="service" className="bg-card/85 w-full px-6 sm:px-16 py-16 lg:py-32">
@@ -75,8 +75,7 @@ export default function Service() {
         {/* Left Column: High-Contrast Tab Selectors */}
         <div className="lg:col-span-5 flex flex-col gap-3 justify-center">
           {services.map((service, index) => {
-            const Icon = service.icon;
-            const isActive = activeTab === index;
+             const isActive = activeTab === index;
             return (
               <button
                 key={index}
@@ -87,14 +86,7 @@ export default function Service() {
                     : "bg-slate-50 border-slate-100 text-slate-700 hover:text-slate-950 hover:bg-slate-100/80 hover:border-slate-200"
                 }`}
               >
-                {/* High-definition Icon Box */}
-                <div className={`p-2.5 rounded-xl border-2 transition-colors ${
-                  isActive 
-                    ? 'bg-white/10 border-white/20 text-white' 
-                    : 'bg-white border-slate-200 text-slate-600 group-hover:text-slate-950 group-hover:border-slate-300'
-                }`}>
-                  <Icon className="w-5 h-5" />
-                </div>
+
                 
                 <div className="flex-1 font-semibold">
                   <h3 className="text-[16px] tracking-tight">{service.title}</h3>
@@ -114,9 +106,7 @@ export default function Service() {
         <div className="lg:col-span-7 rounded-2xl border-2 shadow-2xl  border-foreground/20 bg-card p-8 lg:p-10 flex flex-col justify-between text-slate-900">
           <div className="space-y-6">
             <div className="flex items-center gap-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gray-600 text-white shadow-sm">
-                <ActiveIcon className="w-6 h-6" />
-              </div>
+     
               <h3 className="text-2xl font-bold tracking-tight text-slate-950">
                 {services[activeTab].title}
               </h3>
