@@ -1,5 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Show, SignInButton, SignUpButton, UserButton } from '@clerk/nextjs'
+import { usePathname, useRouter } from "next/navigation";
+import {useAuth} from '@clerk/nextjs'
 import { useRef } from "react";
 type HandleShowMenu = {
     handleShowMenu: ()=> void
@@ -7,7 +9,13 @@ type HandleShowMenu = {
 
 
 export default function MobileMenu({handleShowMenu}:HandleShowMenu){
-    
+  const router = useRouter()
+  const {userId} = useAuth()
+  const pathName = usePathname()
+  const handleClickTrackProject = ()=>{   
+      router.push(`/track_project/${userId}`)
+      handleShowMenu()
+  }
     const menuLists = [
         {
             name:"Home",
@@ -37,12 +45,20 @@ export default function MobileMenu({handleShowMenu}:HandleShowMenu){
     ]
     const timerRef = useRef<NodeJS.Timeout | null>(null)
     const handleClickMobileMenu = (id:string)=>{
+        if(pathName === '/'){
         document.getElementById(id)?.scrollIntoView({behavior:'smooth'})
+        }
         if(timerRef.current) clearTimeout(timerRef.current)
-        timerRef.current = setTimeout(() => {
+          timerRef.current = setTimeout(() => {
           handleShowMenu()  
             
         }, 100);
+        router.push('/')
+        const timer = setTimeout(() => {
+            document.getElementById(id)?.scrollIntoView({behavior:"smooth"})
+            
+        }, 500);
+
 
     }
 
@@ -71,9 +87,10 @@ export default function MobileMenu({handleShowMenu}:HandleShowMenu){
           </SignUpButton>
          </Show>
          
-         <Show when="signed-in">
+         <Show when="signed-in" >
           <a 
             className="text-white font-serif bg-primary mx-4 rounded-full font-medium text-sm h-10 px-5 flex items-center justify-center  transition-all cursor-pointer"
+            onClick={handleClickTrackProject}
            >
              Track Your project
            </a>     

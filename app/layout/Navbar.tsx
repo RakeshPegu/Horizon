@@ -5,11 +5,14 @@ import {Menu} from 'lucide-react'
 import MobileMenu from '../card/Menu';
 import { useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
+import { useAuth } from '@clerk/nextjs';
+
 
 export default function Navbar() {
   const pathName = usePathname()
   const router = useRouter()
   const [showMenu, setShowMenu] = useState(false)
+  const {userId} = useAuth()
   const handleClick = (id:string)=>{
      if(pathName === '/'){
        document.getElementById(id)?.scrollIntoView({behavior:"smooth"})
@@ -39,11 +42,14 @@ export default function Navbar() {
   const handleMenuState = ()=>{
     setShowMenu((prev)=> !prev)
   }
+  const handleClickTrackProject = ()=>{   
+      router.push(`/track_project/${userId}`)
+  }
 
   return (
-    <nav className='flex flex-row   items-center fixed backdrop-blur-md top-0 left-0 z-50 text w-full justify-between px-20 md:px-4 lg:px-12 h-16 shadow-md'>
+    <nav className='flex flex-row    items-center fixed backdrop-blur-md top-0 left-0 z-50 text w-full justify-between px-20 md:px-4 lg:px-12 h-16 shadow-md'>
       {/* Brand Logo */}
-      <div className='relative right-10 md:right-0 font-bold text-xl tracking-wider '>
+      <div className='relative right-16 md:right-0 font-bold text-xl tracking-wider '>
         <span><a href='/'>HORIZON</a></span>
       </div>
 
@@ -82,31 +88,32 @@ export default function Navbar() {
         </Show>
       
         <Show when="signed-in">
-          <a 
+          <Button
             className="text-white bg-primary  font-serif rounded-full font-medium text-sm py-2 px-2 lg:px-4 flex items-center justify-center  transition-all cursor-pointer"
-            href='/track_project/1'
+            onClick={handleClickTrackProject}
            >
              Track Your project
-           </a>
+           </Button>
           <UserButton />
         </Show>
       </div>
 
       {/* navbar menu for mobile screen*/}
-      <div className='relative left-10 md:hidden '>
-        <div className='flex flex-row items-center gap-4' >
-          <div className='cursor-pointer  ' onClick={handleClickMenu}>
-            <Menu/>
-          </div>
+      <div className='relative left-14  md:hidden '>
+        <div className='flex flex-row items-center gap-6' >  
           
           <Show when='signed-in'>
             <UserButton />  
           </Show>
+
+          <div className='cursor-pointer  ' onClick={handleClickMenu}>
+            <Menu/>
+          </div>
         </div> 
-  
+
         <div className={`absolute top-10 w-90 ${showMenu ? '-left-40':'left-100'} transition-all duration-500 ease-in-out bg-foreground `}>
           <MobileMenu handleShowMenu={handleMenuState}/>
-        </div>    
+        </div>  
       </div>
 
 

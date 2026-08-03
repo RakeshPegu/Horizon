@@ -47,7 +47,7 @@ export default function RootLayout({
             {/* Page Content */}
             <main className="relative z-10">
               <div className="flex items-center justify-center w-10 h-10 fixed bottom-6 right-10 z-50 cursor-pointer">
-                <a href="https://wa.me/919387356020?text=Hi%20Rakesh,%20I%20want%20to%20book%20a%20consultation" 
+                <a href="https://wa.me/919387356020?text=Hi%20HorizonLab,%20I%20want%20to%20book%20a%20consultation" 
                 target="_blank" rel="nopener noreferrer">
                   <MessageCircle className="text-accent "/>
                 </a>

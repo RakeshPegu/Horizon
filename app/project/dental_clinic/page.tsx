@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { PortableText } from "@portabletext/react";
 import { client } from "@/sanity/lib/client";
+import { urlFor } from "@/sanity/lib/image";
 
 const PROJECT_QUERY = `*[
   _type == "project"
@@ -16,7 +17,7 @@ const PROJECT_QUERY = `*[
 
 export default async function CaseStudy() {
   const projects = await client.fetch(PROJECT_QUERY);
-
+  
   return (
     <>
       {projects.map((project: any) => (
@@ -61,19 +62,24 @@ export default async function CaseStudy() {
               </div>
             </div>
 
-            <div className="mt-16 h-137.5 rounded-3xl bg-gray-400 flex items-center justify-center">
-              <image  href={project.image}/>
+            <div className="mt-16 rounded-3xl   flex items-center justify-center">
+              <img src={urlFor(project.image).url()}
+                alt={`${project.title} interface preview`}
+                className="rounded-3xl object-cover "
+              />
             </div>
+    
+
           </section>
 
           {/* Client Overview Section */}
           <section className="max-w-5xl mx-auto px-6 py-20">
             <h2 className="text-3xl font-bold mb-6">Client Overview</h2>
 
-            <p className="text-gray-600 leading-8">
+            <div className="text-gray-600 leading-8">
               <PortableText value={project.overview} />
        
-            </p>
+            </div>
           </section>
 
           {/* Problem Section */}
@@ -116,12 +122,8 @@ export default async function CaseStudy() {
             <div className="flex gap-3 items-center mb-6">
               <Search className="text-blue-600" />
               <h2 className="text-3xl font-bold">Discovery & Research</h2>
-            </div>
-
-            <p className="text-gray-600 leading-8">
-              <PortableText value={project.discover}/>
-
-            </p>
+            </div>            
+              <PortableText value={project.discover}/>            
           </section>
 
           {/* Design Section */}
@@ -206,10 +208,10 @@ export default async function CaseStudy() {
                   Simplifying Appointment Booking
                 </h3>
 
-                <p className="text-gray-600 leading-8">
+                <div className="text-gray-600 leading-8">
                   <PortableText value={project.keychallenge}/>
 
-                </p>
+                </div>
               </div>
             </div>
           </section>
@@ -269,10 +271,10 @@ export default async function CaseStudy() {
               <h2 className="text-3xl font-bold">Conclusion</h2>
             </div>
 
-            <p className="text-gray-600 leading-8">
+            <div className="text-gray-600 leading-8">
               <PortableText value={project.conclusion}/>
        
-            </p>
+            </div>
           </section>
         </div>
       ))}

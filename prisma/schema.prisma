@@ -9,7 +9,7 @@ datasource db {
 }
 model User{
   id   String @id @default(cuid())
-  username String
+  clerk_userId String @unique
   email   String @unique
   createdAt DateTime @default(now())
   qualification Qualification?
@@ -28,7 +28,7 @@ model Qualification{
   description String
   userId     String @unique
   status  BookingStatus @default(pending) 
-  isAgreed Boolean 
+  isAgreed Boolean      @default(true)
   user    User @relation(fields: [userId], references: [id])
   createdAt DateTime @default(now())
 

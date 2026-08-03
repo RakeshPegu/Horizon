@@ -25,7 +25,6 @@ export default function TrackProject() {
   const {isLoaded, isSignedIn} = useAuth()
   const {openSignIn} =  useClerk()
   const router = useRouter()
-  console.log('this is projectId',params.projectId)
   useEffect(()=>{
     if(isLoaded && !isSignedIn){
       openSignIn()

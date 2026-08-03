@@ -7,9 +7,7 @@ export async function POST(request:NextRequest) {
         const userInfo = await prisma.qualification.create({
             data: body.formDetail
         })    
-        console.log('this is the userInfo', userInfo)
         const userId = userInfo.id
-        console.log('this is userId', userId)
         return NextResponse.json({
             success:true,
             userId:userId,        
