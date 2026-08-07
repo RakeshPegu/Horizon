@@ -1,7 +1,10 @@
+"use client"
 import { Button } from "@/components/ui/button"
 import { ExternalLink, ArrowRight } from 'lucide-react'
+import { useRouter } from "next/navigation"
 
 export default function Portfolio() {
+  const router = useRouter()
   const projects = [
     { 
       title: "Serene Smile",
@@ -20,7 +23,11 @@ export default function Portfolio() {
       caseStudyLink: "/project/2"
     },
   ]
+  const handleClickCaseStudy = (href:string)=>{
+    router.push(`${href}`)
 
+    
+  }
   return (
     <section id="portfolio" className="px-4 md:px-10 py-24 lg:py-32 bg-transparent ">
       {/* Header Container */}
@@ -81,25 +88,26 @@ export default function Portfolio() {
               </div>
 
               {/* Action Links */}
-              <div className="flex items-center gap-20 md:gap-10 lg:gap-20 pt-4 mt-auto border-t border-border/50">
+              <div className="flex items-center gap-4 md:gap-10 lg:gap-20 pt-4 mt-auto border-t border-border/50">
                 <Button 
                   variant={'default'}                  
                   size="sm"
-                  className="gap-2 border hover:text-muted-foreground border-amber-50 font-medium p-5"
+                  className="gap-2 border bg-transparent hover:text-muted-foreground border-amber-50 font-medium p-5"
                 >
                   <a href={project.liveLink} target="_blank" className="flex  items-center gap-4" rel="noopener noreferrer">
                     Live Demo <ExternalLink className="h-4 w-4" />
                   </a>
                 </Button>
                 
-                <Button 
-                  variant={'ghost'}
+                <Button
+                  variant={'default'}                  
                   size="sm"
-                  className="gap-1 font-medium text-white hover:text-muted-foreground hover:bg-transparent "
-                >
-                  <a href={project.caseStudyLink} className="flex items-center gap-4  border rounded-2xl p-3">
-                    Case Study <ArrowRight className="h-4 w-4 hover:text-muted" />
-                  </a>
+                  className="gap-2 border bg-transparent hover:text-muted-foreground border-amber-50 font-medium p-5"
+                  onClick={()=>handleClickCaseStudy(project.caseStudyLink)}
+          
+                  
+                >             
+                  <span>Case Study </span><ArrowRight className="h-4 w-4 hover:text-muted" />                  
                 </Button>
               </div>
             </div>

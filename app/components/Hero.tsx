@@ -23,8 +23,8 @@ export default function Hero({handleFormState}: HeroType){
            time and increase revenue.</p>
         </div>
         <div className='flex flex-row gap-4 pl-2 flex-wrap sm:gap-6'>
-        <Button className={ 'sm:py-6 sm:px-6'} onClick={()=>handleFormState()}>Book a Free consultation</Button>
-        <Button className={'sm:py-6 sm:px-6'} onClick={()=>handleExploreServiceBtnClick()}> Explore our services</Button>        
+        <Button className={ 'py-6 px-3 sm:px-6'} onClick={()=>handleFormState()}>Book a Free consultation</Button>
+        <Button className={'py-6 px-3 sm:px-6'} onClick={()=>handleExploreServiceBtnClick()}> Explore our services</Button>        
        </div>
        </div>
        <div>

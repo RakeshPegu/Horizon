@@ -28,9 +28,9 @@ export default async function CaseStudy() {
               Case Study
             </span>
 
-            <h1 className="text-5xl font-bold mt-4">
+            <h2 className="text-5xl font-bold mt-4">
               {project.header}
-            </h1>
+            </h2>
  
             <p className="text-xl text-gray-600 mt-6 max-w-3xl">
               A modern, SEO-optimized website built to help a local dental clinic

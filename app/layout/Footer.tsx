@@ -105,9 +105,9 @@ export default function Footer() {
 
           {/* Column 2: Navigation Links */}
           <div className="space-y-4">
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-white">
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-white">
               Navigation
-            </h4>
+            </h3>
             <ul className="space-y-2.5 text-sm">
               {footerData.navigation.map((item) => (
                 <li key={item.id}

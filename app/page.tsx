@@ -1,14 +1,17 @@
 "use client"
-
+import dynamic from "next/dynamic"
 import { useState } from "react"
-import About from "./components/About"
-import Faq from "./components/Faq"
-import Hero from "./components/Hero"
-import Portfolio from "./components/Portfolio"
-import Proccess from "./components/Process"
-import Service from "./components/Services"
-import QualificationForm from "./card/QualificationForm"
+const About = dynamic(()=>(import("./components/About")), {loading: ()=> <div className="flex justify-center items-center h-screen"><Spinner/></div>}) 
+const Faq  = dynamic(()=>import("./components/Faq"), {loading: ()=><div className="flex justify-center items-center h-screen "><Spinner/></div>})
+const Hero = dynamic(()=>import("./components/Hero"), {loading: ()=><div className="flex justify-center items-center  h-screen"><Spinner/></div>})
+const Portfolio = dynamic(()=>import("./components/Portfolio"), {loading: ()=><div className="flex justify-center items-center h-screen "><Spinner/></div>})
+const Process = dynamic(()=>import("./components/Process"), {loading: ()=><div className="flex justify-center items-center  h-screen"><Spinner/></div>})
+const Service = dynamic(()=>import("./components/Services"), {loading: ()=><div className="flex justify-center items-center h-screen "><Spinner/></div>})
+const  QualificationForm = dynamic(()=>import("./card/QualificationForm"), {loading: ()=><div className="flex justify-center items-center h-screen "><Spinner/></div>})
+
 import {useAuth, useClerk} from '@clerk/nextjs'
+import { Spinner } from "@/components/ui/spinner"
+import LazyLoaderSection from "./utils/lazySection"
 
 export default function Home(){
     const [showQualificationForm, setShowQualificationForm] = useState(false)
@@ -31,13 +34,27 @@ export default function Home(){
 
   return(
     <>
+    
     <QualificationForm formState={showQualificationForm} handleFormState={handleShowQualification}/>
+
+    <LazyLoaderSection>
     <Hero  handleFormState={handleBookBtnClick}/>
+    </LazyLoaderSection>
+    <LazyLoaderSection>
     <About handleFormState={handleBookBtnClick}/>
+    </LazyLoaderSection>
+    <LazyLoaderSection>
     <Service/>
-    <Proccess/>
+    </LazyLoaderSection>
+    <LazyLoaderSection>
+    <Process/>
+    </LazyLoaderSection>
+    <LazyLoaderSection>
     <Faq  handleFormState={handleBookBtnClick}/>
+    </LazyLoaderSection>
+    <LazyLoaderSection>
     <Portfolio/>
+    </LazyLoaderSection>
     </>
 
 

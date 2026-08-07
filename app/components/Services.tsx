@@ -82,7 +82,7 @@ export default function Service() {
                 onClick={() => setActiveTab(index)}
                 className={`w-full cursor-pointer flex items-center gap-4 p-5 text-left rounded-2xl  transition-all duration-200 group ${
                   isActive
-                    ? "bg-primary  text-white shadow-md shadow-slate-900/20"
+                    ? "bg-foreground/80  text-white shadow-md shadow-slate-900/20"
                     : "bg-slate-50 border-slate-100 text-slate-700 hover:text-slate-950 hover:bg-slate-100/80 hover:border-slate-200"
                 }`}
               >

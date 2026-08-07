@@ -65,7 +65,7 @@ export default function Faq({handleFormState}:FaqTypes) {
         </div>
 
         {/* Right Side */}
-        <div className="flex flex-col gap-2 pl-5 sm:px-6  h-max-full sm:flex-1/2">
+        <div className="flex flex-col  gap-2 px-2 sm:px-6  h-max-full sm:flex-1/2">
           {faqs.map((faq, index)=>{
             const isOpen = openIdex  === index ;
             return (
