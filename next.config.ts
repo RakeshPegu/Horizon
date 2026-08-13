@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  allowedDevOrigins: ['https://crucial-surfboard-caption.ngrok-free.dev']
+  allowedDevOrigins: ['https://crucial-surfboard-caption.ngrok-free.dev'],
+  devIndicators: false
 
 };
 

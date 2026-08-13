@@ -14,14 +14,14 @@ export default function Portfolio() {
       liveLink: "https://dental-clinic-website-zeta-opal.vercel.app/",
       caseStudyLink: "/project/dental_clinic"
     },
-    {
-      title: "AutoRes",
-      image: "./serene.png", 
-      description: "An AI-powered customer support automation engine tailored for scaling SaaS companies.",
+     {
+       title: "Horizon",
+       image: "./horizon.png", 
+       description:"An agency website where businesses can explore services, book a consultation, and find the right digital solution for their needs.",       
       techs: ['Next.js', 'TailwindCSS', 'TypeScript', 'OpenAI API'],
       liveLink: "#",
-      caseStudyLink: "/project/2"
-    },
+       caseStudyLink: "/project/2"
+     },
   ]
   const handleClickCaseStudy = (href:string)=>{
     router.push(`${href}`)
@@ -60,7 +60,7 @@ export default function Portfolio() {
               <img 
                 src={project.image} 
                 alt={`${project.title} interface preview`} 
-                className="rounded-lg object-cover w-full h-full shadow-md transition-transform duration-500 group-hover:scale-[1.02]"
+                className="rounded-lg object-fill  w-full h-full shadow-md transition-transform duration-500 group-hover:scale-[1.02]"
               />
             </div>
 

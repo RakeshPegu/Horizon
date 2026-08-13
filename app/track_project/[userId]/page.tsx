@@ -21,7 +21,6 @@ import { useEffect } from "react";
 import { Spinner } from "@/components/ui/spinner";
 
 export default function TrackProject() {
-  const params = useParams()
   const {isLoaded, isSignedIn} = useAuth()
   const {openSignIn} =  useClerk()
   const router = useRouter()
@@ -234,7 +233,8 @@ export default function TrackProject() {
           <CardContent className="flex flex-wrap  gap-4">
             <Button className={ 'bg-green-500 px-4 cursor-pointer'}>
               <a href="https://wa.me/919387356020?text=Hi%20Rakesh,%20I%20want%20to%20book%20a%20consultation" 
-                target="_blank" rel="nopener noreferrer"
+                target="_blank"
+               rel="noopener noreferrer"         
                 className="flex items-center gap-2"
                 >
               <MessageCircle className=" h-4 w-4" />
@@ -242,13 +242,13 @@ export default function TrackProject() {
               </a>
             </Button>
 
-            
-              <a href="mailto:rpegu0651@gmail.com?subject=Booking%20Consultation&body=Hi,%20I'd%20like%20to%20book%20a%20consultation."
-              className="flex items-center gap-2"
-              >
-              <Mail className="h-4 w-4" />
-              Email
-              </a>              
+            <a
+            href="mailto:rpegu0651@gmail.com?subject=Booking%20Consultation&body=Hi,%20I%27d%20like%20to%20book%20a%20consultation."   
+            className="flex flex-row gap-3 border px-4 rounded-2xl items-center"         
+            >
+            <Mail className="h-4 w-4" />
+            Email
+           </a>
             
           </CardContent>
         </Card>
