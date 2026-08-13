@@ -1,6 +1,6 @@
-import { prisma } from "@/prisma/seed";
 import { WebhookEvent } from "@clerk/nextjs/server";
 import type { UserJSON } from "@clerk/backend";
+import prisma from "@/lib/prisma";
 
 export async function POST(request: Request) {
   const payload: WebhookEvent = await request.json();
