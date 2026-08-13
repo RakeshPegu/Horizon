@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 export const metadata: Metadata = { 
-  title: "HorizonLab", 
+  title: "InnovHubs", 
   description: "A agency to build solution for small businessess and startups", };
 
 export default function RootLayout({

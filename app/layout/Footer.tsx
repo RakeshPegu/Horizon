@@ -6,7 +6,7 @@ export default function Footer() {
   const router = useRouter()
   const footerData = {
     brand: {
-      name: "HorizonLab",
+      name: "InnovHubs",
       tagline:
         "Building high-performance web applications and AI automation for growing businesses.",
       socials: [
