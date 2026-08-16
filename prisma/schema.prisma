@@ -15,9 +15,9 @@ model User{
   qualification Qualification?
 }
 enum BookingStatus {
-  qualification_submitted
-  booked
-  completed
+  SUBMITTED
+  BOOKED
+  COMPLETED
 
 }
 model Qualification{
@@ -26,10 +26,10 @@ model Qualification{
   email String
   budget String
   company String
-  description String
-  userId     String @unique
-  status  BookingStatus @default(qualification_submitted) 
+  description String  
+  status  BookingStatus @default(SUBMITTED) 
   isAgreed Boolean      @default(true)
+  userId     String  @unique
   user    User @relation(fields: [userId], references: [id])
   createdAt DateTime @default(now())
 
