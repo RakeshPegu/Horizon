@@ -1,5 +1,6 @@
 "use client"
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@clerk/nextjs";
 import { X } from "lucide-react";
 import { useRouter } from "next/navigation";
 import React, {useState } from "react";
@@ -13,8 +14,9 @@ export default function QualificationForm({
   handleFormState,
 }: HandleFormState) {
   const router = useRouter()
-  const [formDetail, setFormDetail] = useState({name: '', email: '', company:'', budget:'' , description:"", isAgreed:false })
+  const [formDetail, setFormDetail] = useState({name: '', email: '', company:'', budget:'' , description:"", isAgreed:false, })
   const [isDisabled, setIsDisabled] = useState(false)
+  
 
   const handleQualiForm = async(e:React.FormEvent<HTMLFormElement>)=>{
     try {
