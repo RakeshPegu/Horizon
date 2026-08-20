@@ -176,7 +176,7 @@ export default function TrackProject() {
 
         {/* =================== Files =================== */}
 
-        <Card>
+        {/* <Card>
           <CardHeader>
             <CardTitle>Files</CardTitle>
           </CardHeader>
@@ -199,7 +199,7 @@ export default function TrackProject() {
               />
             </div>
           </CardContent>
-        </Card>
+        </Card> */}
 
         {/* =================== Meeting =================== */}
 

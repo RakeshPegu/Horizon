@@ -42,8 +42,8 @@ export default function Navbar() {
   const handleMenuState = ()=>{
     setShowMenu((prev)=> !prev)
   }
-  const handleClickTrackProject = ()=>{   
-      router.push(`/track_project/${userId}`)
+  const handleClickBookedMeeting = ()=>{   
+      router.push(`/booked_meeting/${userId}`)
   }
 
   return (
@@ -90,9 +90,9 @@ export default function Navbar() {
         <Show when="signed-in">
           <Button
             className="text-white bg-primary  font-serif rounded-full font-medium text-sm py-2 px-2 lg:px-4 flex items-center justify-center  transition-all cursor-pointer"
-            onClick={handleClickTrackProject}
+            onClick={handleClickBookedMeeting}
            >
-             Track Your project
+             Booked Meeting
            </Button>
           <UserButton />
         </Show>
