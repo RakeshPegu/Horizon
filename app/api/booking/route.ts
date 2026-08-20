@@ -58,3 +58,34 @@ export async function POST(request:NextRequest){
     }
     
 }
+export  async function GET() {
+    try {
+        const {userId: clerkUserId} = await auth()
+        if(!clerkUserId){
+            return NextResponse.json({
+                success:false,
+                message:"Unauthorized"
+            },{
+                status:401
+            })
+
+        }
+        const scheduledMeetings = await prisma.scheduledMeeting.findMany({where:{userId:clerkUserId}})
+        
+        return NextResponse.json({
+            success:true,
+            scheduledMeetings            
+        })
+        
+    } catch (error) {
+
+        return NextResponse.json({
+            success:false,
+            message:error instanceof Error ? error.message : 'Something went wrong'
+        },{
+            status: 500
+        })
+        
+    }
+    
+}

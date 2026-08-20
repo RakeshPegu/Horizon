@@ -3,16 +3,12 @@ import { Button } from "@/components/ui/button";
 import { useAuth } from "@clerk/nextjs";
 import { X } from "lucide-react";
 import { useRouter } from "next/navigation";
-import React, {useState } from "react";
-type HandleFormState = {
-  formState: boolean;
-  handleFormState: () => void;
-};
+import React, {useContext, useState } from "react";
+import { QualificationFormContext } from "./QualificationProvider";
 
-export default function QualificationForm({
-  formState,
-  handleFormState,
-}: HandleFormState) {
+
+export default function QualificationForm() {
+  const {isOpen, handleFormState} = useContext(QualificationFormContext)
   const router = useRouter()
   const {userId} = useAuth()
   const [formDetail, setFormDetail] = useState({name: '', email: '', company:'', budget:'' , description:"", isAgreed:false, })
@@ -52,7 +48,7 @@ export default function QualificationForm({
     
     
   }
- 
+  console.log('this is formState', isOpen)
   return (
     <section
       className={`
@@ -60,7 +56,7 @@ export default function QualificationForm({
         bg-black/70 backdrop-blur-sm
         transition-all duration-200 ease-in-out
         ${
-          formState
+          isOpen
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
         }
@@ -72,7 +68,7 @@ export default function QualificationForm({
           bg-white shadow-2xl
           transition-all duration-500 ease-in-out
           ${
-            formState
+            isOpen
               ? "translate-y-0 scale-100"
               : "translate-y-8 scale-95"
           }

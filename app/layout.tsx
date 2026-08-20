@@ -5,6 +5,8 @@ import {MessageCircle} from 'lucide-react'
 import "./globals.css";
 import ClientLayout from "./clientLayout";
 import Footer from "./layout/Footer";
+import { QualificationFormProvider } from "./card/QualificationProvider";
+import QualificationForm from "./card/QualificationForm";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,6 +35,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <QualificationFormProvider>
         <ClerkProvider>
           <ClientLayout>
            <div className="relative min-h-full w-full  overflow-hidden bg-neutral-950 text-neutral-100 ">
@@ -46,6 +49,7 @@ export default function RootLayout({
 
             {/* Page Content */}
             <main className="relative z-10">
+              <QualificationForm/>
               <div className="flex items-center justify-center w-10 h-10 fixed bottom-6 right-14 z-50 cursor-pointer">
                 <a href="https://wa.me/919387356020?text=Hi%20HorizonLab,%20I%20want%20to%20book%20a%20consultation" 
                 target="_blank" rel="nopener noreferrer" className="flex flex-row items-center gap-4 bg-accent-foreground p-3 rounded-2xl">
@@ -59,6 +63,7 @@ export default function RootLayout({
           </div>     
           </ClientLayout>     
         </ClerkProvider>
+        </QualificationFormProvider>
       </body>
     </html>
   );

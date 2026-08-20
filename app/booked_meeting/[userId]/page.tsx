@@ -1,3 +1,4 @@
+"use client"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import {
@@ -6,8 +7,63 @@ import {
   Video,
   CheckCircle2,
 } from "lucide-react";
+import { useContext, useEffect, useState } from "react";
+import { QualificationFormContext } from "@/app/card/QualificationProvider";
+
 
 export default function BookedMeeting() {
+  const [bookings, setBooking] = useState([])
+  const {isOpen,handleFormState} = useContext(QualificationFormContext)
+  useEffect(()=>{
+    async function getBooking() {
+      const response = await fetch('/api/booking')
+      const data =await response.json()
+      setBooking(data.scheduledMeetings)
+      
+    }
+    getBooking()
+
+  }, [])
+  console.log('this is formstate', isOpen)
+if (bookings.length === 0) {
+  return (
+    <section className="min-h-[90vh] flex items-center justify-center px-4">
+      <Card className="w-full max-w-2xl overflow-hidden">
+        <CardContent className="flex flex-col items-center justify-center px-6 py-16 text-center sm:px-10">
+          
+          {/* Icon */}
+          <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10">
+            <CalendarDays className="h-7 w-7 text-primary" />
+          </div>
+
+          {/* Heading */}
+          <h2 className="text-2xl font-semibold tracking-tight">
+            No consultation booked yet
+          </h2>
+
+          {/* Description */}
+          <p className="mt-3 max-w-md text-sm leading-6 text-muted-foreground">
+            Ready to discuss your project? Book a consultation with us to
+            talk about your goals, requirements, and how we can help bring
+            your ideas to life.
+          </p>
+
+          {/* CTA */}
+          <Button className="mt-8 px-6" onClick={handleFormState}>
+            Book a Consultation
+          </Button>
+
+          {/* Supporting text */}
+          <p className="mt-4 text-xs text-muted-foreground">
+            Choose a convenient date and time that works for you.
+          </p>
+        </CardContent>
+      </Card>
+    </section>
+  );
+}
+
+
   return (
     <section className="min-h-[90vh] flex items-center justify-center px-4">
       <Card className="w-full max-w-2xl overflow-hidden">

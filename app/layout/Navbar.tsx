@@ -92,7 +92,7 @@ export default function Navbar() {
             className="text-white bg-primary  font-serif rounded-full font-medium text-sm py-2 px-2 lg:px-4 flex items-center justify-center  transition-all cursor-pointer"
             onClick={handleClickBookedMeeting}
            >
-             Booked Meeting
+             Scheduled Meeting
            </Button>
           <UserButton />
         </Show>
