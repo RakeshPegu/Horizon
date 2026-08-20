@@ -14,6 +14,7 @@ export default function QualificationForm({
   handleFormState,
 }: HandleFormState) {
   const router = useRouter()
+  const {userId} = useAuth()
   const [formDetail, setFormDetail] = useState({name: '', email: '', company:'', budget:'' , description:"", isAgreed:false, })
   const [isDisabled, setIsDisabled] = useState(false)
   
@@ -38,7 +39,7 @@ export default function QualificationForm({
     const result = await response.json()
     console.log('this is result', result)
     if(result.success === true){
-      router.push(`/booking_consultation/${result.userId}`)
+      router.push(`/booking_consultation/${userId}`)
     }
       
     } catch (error) {

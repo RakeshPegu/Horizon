@@ -241,14 +241,14 @@ export default function TrackProject() {
               WhatsApp
               </a>
             </Button>
-
+            {/* 
             <a
             href="mailto:rpegu0651@gmail.com?subject=Booking%20Consultation&body=Hi,%20I%27d%20like%20to%20book%20a%20consultation."   
             className="flex flex-row gap-3 border px-4 rounded-2xl items-center"         
             >
             <Mail className="h-4 w-4" />
             Email
-           </a>
+           </a> */}
             
           </CardContent>
         </Card>

@@ -93,8 +93,23 @@ export default function BookingConsultation(){
                             <p>{option.description}</p>
                         </div>
                        ))}
-                    </div>                  
-                    <div className="flex justify-center items-center gap-4 text-lg" ><MessageCircle className="text-accent"/><p>Prefer WhatsApp first? <strong className="hover:underline pl-2 cursor-pointer "> Chat before booking </strong></p></div>
+                    </div>       
+                    <div className="flex items-center justify-center gap-3 text-lg">
+                      <MessageCircle className="text-accent" />
+
+                      <p>
+                        Prefer WhatsApp first?{" "}
+                        <a
+                          href="https://wa.me/919387356020?text=Hi%20HorizonLab,%20I%20want%20to%20book%20a%20consultation"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="ml-1 font-semibold text-accent hover:underline"
+                        >
+                          Chat before booking →
+                        </a>
+                      </p>
+                    </div>           
+ 
                 </CardContent>
             </Card>
             <Cal namespace="quick-chat"
