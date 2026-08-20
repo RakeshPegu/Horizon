@@ -9,59 +9,108 @@ import {
 } from "lucide-react";
 import { useContext, useEffect, useState } from "react";
 import { QualificationFormContext } from "@/app/card/QualificationProvider";
+import { useAuth, useClerk } from "@clerk/nextjs";
+import { useRouter } from "next/navigation";
+import { Spinner } from "@/components/ui/spinner";
 
 
 export default function BookedMeeting() {
   const [bookings, setBooking] = useState([])
+  const [error, setError] = useState<string | undefined>()
+  const {openSignIn} = useClerk()
+  const {isLoaded, isSignedIn} = useAuth()
   const {isOpen,handleFormState} = useContext(QualificationFormContext)
-  useEffect(()=>{
-    async function getBooking() {
-      const response = await fetch('/api/booking')
-      const data =await response.json()
-      setBooking(data.scheduledMeetings)
-      
+  const router = useRouter()
+    useEffect(()=>{
+    if(isLoaded && !isSignedIn){
+      openSignIn()
     }
-    getBooking()
+    
+  },[ isSignedIn, isLoaded, openSignIn])
+
+  if(!isLoaded){
+    return(
+    <div className="h-[80vh] flex justify-center items-center">
+         <Spinner/>
+
+    </div>
+    )
+  }
+  if(!isSignedIn){
+        <section className="flex relative  h-[90vh] flex-col items-center justify-center gap-4 py-20 text-center">
+        <p className="text-lg">Please sign in to book your consultation.</p>
+        <div className="flex gap-4">
+          <button
+            onClick={() => openSignIn()}
+            className="rounded-full bg-blue-500 text-white px-6 py-2"
+          >
+            Sign in
+          </button>
+            <button onClick={() => router.push('/')}
+            className="rounded-full ring-1 px-6 py-2"
+          >
+            Cancel
+          </button>
+        </div>
+      </section>
+
+  }
+  useEffect(()=>{
+    try {
+      async function getBooking() {      
+      const response = await fetch('/api/booking')
+      const data = await response.json()
+      setBooking(data.scheduledMeetings)
+      }
+      getBooking()
+        
+      } catch (error) {
+        if(error instanceof Error){
+          setError(error.message!)
+        }
+        
+        
+      }
+
 
   }, [])
-  console.log('this is formstate', isOpen)
-if (bookings.length === 0) {
-  return (
-    <section className="min-h-[90vh] flex items-center justify-center px-4">
-      <Card className="w-full max-w-2xl overflow-hidden">
-        <CardContent className="flex flex-col items-center justify-center px-6 py-16 text-center sm:px-10">
-          
-          {/* Icon */}
-          <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10">
-            <CalendarDays className="h-7 w-7 text-primary" />
-          </div>
+  if (bookings.length === 0) {
+    return (
+      <section className="min-h-[90vh] flex items-center justify-center px-4">
+        <Card className="w-full max-w-2xl overflow-hidden">
+          <CardContent className="flex flex-col items-center justify-center px-6 py-16 text-center sm:px-10">
+            
+            {/* Icon */}
+            <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10">
+              <CalendarDays className="h-7 w-7 text-primary" />
+            </div>
 
-          {/* Heading */}
-          <h2 className="text-2xl font-semibold tracking-tight">
-            No consultation booked yet
-          </h2>
+            {/* Heading */}
+            <h2 className="text-2xl font-semibold tracking-tight">
+              No consultation booked yet
+            </h2>
 
-          {/* Description */}
-          <p className="mt-3 max-w-md text-sm leading-6 text-muted-foreground">
-            Ready to discuss your project? Book a consultation with us to
-            talk about your goals, requirements, and how we can help bring
-            your ideas to life.
-          </p>
+            {/* Description */}
+            <p className="mt-3 max-w-md text-sm leading-6 text-muted-foreground">
+              Ready to discuss your project? Book a consultation with us to
+              talk about your goals, requirements, and how we can help bring
+              your ideas to life.
+            </p>
 
-          {/* CTA */}
-          <Button className="mt-8 px-6" onClick={handleFormState}>
-            Book a Consultation
-          </Button>
+            {/* CTA */}
+            <Button className="mt-8 px-6" onClick={handleFormState}>
+              Book a Consultation
+            </Button>
 
-          {/* Supporting text */}
-          <p className="mt-4 text-xs text-muted-foreground">
-            Choose a convenient date and time that works for you.
-          </p>
-        </CardContent>
-      </Card>
-    </section>
-  );
-}
+            {/* Supporting text */}
+            <p className="mt-4 text-xs text-muted-foreground">
+              Choose a convenient date and time that works for you.
+            </p>
+          </CardContent>
+        </Card>
+      </section>
+    );
+  }
 
 
   return (
