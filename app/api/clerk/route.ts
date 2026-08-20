@@ -3,8 +3,10 @@ import type { UserJSON } from "@clerk/backend";
 import prisma from "@/lib/prisma";
 import {Webhook} from 'svix'
 import { headers } from "next/headers";
+import { slidingWindowRateLimiter } from "@/proxy";
+import { NextRequest, NextResponse } from "next/server";
 const webhookSecret = process.env.CLERK_WEBHOOK_SECRET || ``
-async function validateRequest(request:Request) {
+async function validateRequest(request:NextRequest) {
   const payloadString = await request.text()
   const headerPayload = await headers()
   const svixHeaders = {
@@ -16,8 +18,9 @@ async function validateRequest(request:Request) {
   return wh.verify(payloadString, svixHeaders) as WebhookEvent
   
 }
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
   try {
+      await slidingWindowRateLimiter(request)
       const payload = await validateRequest(request)
       if (payload.type === "user.created") {
       const data = payload.data as UserJSON;
@@ -32,10 +35,10 @@ export async function POST(request: Request) {
         },
       });
     }
-    return Response.json({ message: 'Received' });    
+    return NextResponse.json({ message: 'Received' });    
   } catch (error) {
     console.log('error occured during data sync', error)
-    return Response.error()
+    return NextResponse.error()
     
   }
 
