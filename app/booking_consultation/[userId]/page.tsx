@@ -12,7 +12,6 @@ import { QualificationFormContext } from "@/app/card/QualificationProvider";
 export default function BookingConsultation(){
     const params = useParams()
     const router = useRouter()
-
     const {handleFormState} = useContext(QualificationFormContext)
     const [qualificationId, setQualicationId]= useState<string |null>()
     const {isSignedIn, isLoaded}  = useAuth()
@@ -48,7 +47,6 @@ export default function BookingConsultation(){
     async  function fetchBookingInfo(){
       const response = await fetch('/api/qualification')
       const  result = await response.json()
-      console.log('this is the result', result)
       if(result.success === false && response.status === 404){
         router.push('/')
         handleFormState()

@@ -95,7 +95,6 @@ export async function POST(request: NextRequest) {
 export  async function GET(){
     try {
         const {userId: clerkUserId} = await auth()
-        console.log('this is userId', clerkUserId)
         if(!clerkUserId){
             return NextResponse.json({
                 success:false,

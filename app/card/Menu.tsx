@@ -12,8 +12,8 @@ export default function MobileMenu({handleShowMenu}:HandleShowMenu){
   const router = useRouter()
   const {userId} = useAuth()
   const pathName = usePathname()
-  const handleClickTrackProject = ()=>{   
-      router.push(`/track_project/${userId}`)
+  const handleClickScheduledMeeting = ()=>{   
+      router.push(`/booked_meeting/${userId}`)
       handleShowMenu()
   }
     const menuLists = [
@@ -89,10 +89,10 @@ export default function MobileMenu({handleShowMenu}:HandleShowMenu){
          
          <Show when="signed-in" >
           <Button
-            className="text-white font-serif bg-primary mx-4 rounded-full font-medium text-sm h-10 px-5 flex items-center justify-center  transition-all cursor-pointer"
-            onClick={handleClickTrackProject}
+            className="text-white font-serif bg-primary  ml-8  rounded-full font-medium text-sm h-10 px-4 flex items-center justify-center  transition-all cursor-pointer"
+            onClick={handleClickScheduledMeeting}
            >
-             Track Your project
+             Scheduled Meeting
            </Button>  
                     
         </Show>

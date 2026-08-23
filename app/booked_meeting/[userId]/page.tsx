@@ -12,14 +12,21 @@ import { QualificationFormContext } from "@/app/card/QualificationProvider";
 import { useAuth, useClerk } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import { Spinner } from "@/components/ui/spinner";
-
+interface BookingSchema{
+  email: string,
+  id: string,
+  name: string,
+  qualificationId:string,
+  scheduledDate:Date,
+  meetingLink: string
+}
 
 export default function BookedMeeting() {
-  const [bookings, setBooking] = useState([])
+  const [bookings, setBooking] = useState<BookingSchema[]>()
   const [error, setError] = useState<string | undefined>()
   const {openSignIn} = useClerk()
   const {isLoaded, isSignedIn} = useAuth()
-  const {isOpen,handleFormState} = useContext(QualificationFormContext)
+  const {handleFormState} = useContext(QualificationFormContext)
   const router = useRouter()
     useEffect(()=>{
     if(isLoaded && !isSignedIn){
@@ -46,7 +53,7 @@ export default function BookedMeeting() {
 
 
   }, [])
-  console.log('this is booking', bookings)
+  
   if(!isLoaded){
     return(
     <div className="h-[80vh] flex justify-center items-center">
@@ -75,7 +82,8 @@ export default function BookedMeeting() {
 
   }
 
-  if (bookings.length === 0) {
+
+  if (bookings?.length === 0) {
     return (
       <section className="min-h-[90vh] flex items-center justify-center px-4">
         <Card className="w-full max-w-2xl overflow-hidden">
@@ -116,7 +124,9 @@ export default function BookedMeeting() {
 
   return (
     <section className="min-h-[90vh] flex items-center justify-center px-4">
-      <Card className="w-full max-w-2xl overflow-hidden">
+      {bookings &&(
+      bookings.map((bookingInfo, index)=>(
+      <Card className="w-full max-w-2xl overflow-hidden" key={index}>
         <CardHeader className="border-b">
           <div className="flex items-center justify-between">
             <div>
@@ -174,14 +184,16 @@ export default function BookedMeeting() {
             <p className="text-sm text-muted-foreground">
               Please join a few minutes before the meeting.
             </p>
-
-            <Button className="gap-2">
+            <a href={bookingInfo.meetingLink} className="flex items-center bg-green-500 hover:bg-green-300 transition-all  duration-500 gap-3 px-3 py-2 rounded-2xl"> 
               <Video className="h-4 w-4" />
               Join Google Meet
-            </Button>
+            </a>
+          
           </div>
         </CardContent>
       </Card>
+      ))
+      )}
     </section>
   );
 }
