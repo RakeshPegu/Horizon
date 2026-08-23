@@ -27,7 +27,26 @@ export default function BookedMeeting() {
     }
     
   },[ isSignedIn, isLoaded, openSignIn])
+  useEffect(()=>{
+    try {
+      async function getBooking() {      
+      const response = await fetch('/api/schedule_booking')
+      const data = await response.json()
+      setBooking(data.scheduledMeetings)
+      }
+      getBooking()
+        
+      } catch (error) {
+        if(error instanceof Error){
+          setError(error.message!)
+        }
+        
+        
+      }
 
+
+  }, [])
+  console.log('this is booking', bookings)
   if(!isLoaded){
     return(
     <div className="h-[80vh] flex justify-center items-center">
@@ -55,25 +74,7 @@ export default function BookedMeeting() {
       </section>
 
   }
-  useEffect(()=>{
-    try {
-      async function getBooking() {      
-      const response = await fetch('/api/booking')
-      const data = await response.json()
-      setBooking(data.scheduledMeetings)
-      }
-      getBooking()
-        
-      } catch (error) {
-        if(error instanceof Error){
-          setError(error.message!)
-        }
-        
-        
-      }
 
-
-  }, [])
   if (bookings.length === 0) {
     return (
       <section className="min-h-[90vh] flex items-center justify-center px-4">

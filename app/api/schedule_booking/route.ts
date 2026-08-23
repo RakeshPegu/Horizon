@@ -1,12 +1,12 @@
+
 import prisma from "@/lib/prisma";
 import { auth } from "@clerk/nextjs/server";
 import { NextRequest, NextResponse } from "next/server";
 import crypto from 'node:crypto'
 
 export async function POST(request:NextRequest){
-    try {
+    try {        
         const signature = request.headers.get('x-cal-signature-256')
-        console.log('this is the signatue')
         const secret = process.env.CALCOM_WEBHOOK_SECRET
         if (!signature || !secret) {
          return NextResponse.json({ error: 'Missing signature or secret configuration' }, { status: 401 });
@@ -27,17 +27,33 @@ export async function POST(request:NextRequest){
                 status:401
             })
         }
-        const payload = JSON.parse(rawBody)
-        const {userId: clerkUserId} = await auth()
-        if(!clerkUserId){
+        const webhookData = JSON.parse(rawBody)
+        console.log('this is the payload', webhookData)
+        const metadata = webhookData?.payload.metadata
+        const scheduleData = webhookData?.payload.organizer
+        const existingQualfication = await prisma.qualification.findFirst({
+            where:{id:metadata.qualificationId}
+        })
+        if(!existingQualfication){
             return NextResponse.json({
                 success:false,
-                message:"Unauthorized"
+                message:"Qualication not found"
             },{
-                status:401
+                status:404
             })
         }
-        console.log('this is the payload', payload)
+        const newScheduledMeeting = await prisma.scheduledMeeting.create({
+            data:{
+                meetingLink:metadata.videoCallUrl,
+                status:"SCHEDULED",
+                email:scheduleData.email,
+                name: scheduleData.name,
+                scheduledDate:webhookData.payload.startTime,
+                qualificationId:existingQualfication.id
+
+            }
+
+        })
         return NextResponse.json({
             success:true,
             message:"New meeting has been scheduled"
@@ -70,14 +86,32 @@ export  async function GET() {
             })
 
         }
-        const scheduledMeetings = await prisma.scheduledMeeting.findMany({where:{userId:clerkUserId}})
-        
+        const user = await prisma.user.findUnique({where:{clerk_userId:clerkUserId}})
+        if(!user){
+            return NextResponse.json({
+                success:false,
+                message:"Not found"
+            },
+            {
+                status:404
+            }
+        )
+        }
+        const existingQualfication = await prisma.qualification.findUnique({where:{userId:user.id}})
+        if(!existingQualfication){
+            return NextResponse.json({
+                success:false,
+                message:"Qualification not found"
+            })
+        }
+        const scheduledMeetings = await prisma.scheduledMeeting.findMany({where:{qualificationId:existingQualfication.id}})
         return NextResponse.json({
             success:true,
             scheduledMeetings            
         })
         
     } catch (error) {
+        console.log()
 
         return NextResponse.json({
             success:false,

@@ -13,7 +13,6 @@ model User{
   email   String @unique
   createdAt DateTime @default(now())
   qualification Qualification?
-  scheduledMeeting ScheduledMeeting?
 }
 enum BookingStatus {
   SUBMITTED
@@ -33,6 +32,7 @@ model Qualification{
   userId     String  @unique
   user    User @relation(fields: [userId], references: [id])
   createdAt DateTime @default(now())
+  scheduledMeeting ScheduledMeeting[]
 
 }
 enum MeetingStatus {
@@ -42,12 +42,13 @@ enum MeetingStatus {
 }
 model ScheduledMeeting{
   id String @id @default(cuid()) @unique
-  userId String @unique
-  user   User @relation(fields:[userId], references: [id])
+  email String
+  name String
   scheduledDate DateTime
-  scheduleTime DateTime
   status  MeetingStatus @default(SCHEDULED)
   meetingLink String
+  qualificationId String @unique
+  qualication Qualification @relation(fields: [qualificationId], references: [id])
   createdAt DateTime @default(now()) 
 
 

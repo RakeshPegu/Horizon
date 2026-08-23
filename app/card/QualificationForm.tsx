@@ -19,8 +19,8 @@ export default function QualificationForm() {
     try {
       setIsDisabled(true)
      e.preventDefault()
-    console.log("this is formData", formDetail)
-    const response = await fetch('/api/qualification', {
+      console.log("this is formData", formDetail)
+      const response = await fetch('/api/qualification', {
       method:"POST",
       headers: {
         'Content-Type':" application/json"
@@ -33,9 +33,10 @@ export default function QualificationForm() {
 
     ) 
     const result = await response.json()
-    console.log('this is result', result)
     if(result.success === true){
+      handleFormState()
       router.push(`/booking_consultation/${userId}`)
+
     }
       
     } catch (error) {
@@ -48,7 +49,7 @@ export default function QualificationForm() {
     
     
   }
-  console.log('this is formState', isOpen)
+
   return (
     <section
       className={`

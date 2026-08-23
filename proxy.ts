@@ -9,13 +9,12 @@ const redis = new Redis({
 })
 const ratelimit = new Ratelimit({
     redis,
-    limiter:Ratelimit.slidingWindow(100, "1 m"),
+    limiter:Ratelimit.slidingWindow(10, "1 m"),
     analytics:true,
     prefix: "@upstash/ratelimit"
 })
 export async function slidingWindowRateLimiter(request:NextRequest) {
     const ip = request.headers.get('x-forwarded-for')?.split(", ")[0]?.trim() || 'unknown'
-
     if(ip === 'unknown'){
       return NextResponse.json({
         success:false,
@@ -38,7 +37,13 @@ export async function slidingWindowRateLimiter(request:NextRequest) {
     
 }
 
-export default clerkMiddleware()
+export default clerkMiddleware(async(auth, request)=>{
+  const ratelimitResponse = await slidingWindowRateLimiter(request)
+  if(ratelimitResponse){
+    return ratelimitResponse
+  }
+  return NextResponse.next()
+})
 export const config = {
   matcher: [
     // Skip Next.js internals and all static files, unless found in search params
