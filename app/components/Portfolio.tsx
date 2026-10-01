@@ -2,7 +2,6 @@
 import { Button } from "@/components/ui/button"
 import { ExternalLink, ArrowRight } from 'lucide-react'
 import { useRouter } from "next/navigation"
-
 export default function Portfolio() {
   const router = useRouter()
   const projects = [
@@ -15,13 +14,22 @@ export default function Portfolio() {
       caseStudyLink: "/project/dental_clinic"
     },
      {
-       title: "Horizon",
+       title: "Innovhubs",
        image: "./horizon.png", 
        description:"An agency website where businesses can explore services, book a consultation, and find the right digital solution for their needs.",       
-      techs: ['Next.js', 'TailwindCSS', 'TypeScript', 'OpenAI API'],
-      liveLink: "#",
+       techs: ['Next.js', 'TailwindCSS', 'TypeScript', 'OpenAI API'],
+       liveLink: "https://www.innovhubs.com",
        caseStudyLink: "/project/2"
      },
+     {
+      title:"AutoFlow",
+      image: './autoflow.png',
+      description:"An Software that can collect leads for any  businesess and helps take better decision",
+      techs: ['Next.js', 'TailwindCSS', 'ShadCn', "TypeScript", 'Gemini API', 'BullMq'],
+      live: '#',
+      caseStudyLink:"/project/3"
+
+     }
   ]
   const handleClickCaseStudy = (href:string)=>{
     router.push(`${href}`)

@@ -77,6 +77,7 @@ export async function POST(request:NextRequest){
 export  async function GET() {
     try {
         const {userId: clerkUserId} = await auth()
+        console.log('this is the userID', clerkUserId)
         if(!clerkUserId){
             return NextResponse.json({
                 success:false,
@@ -87,6 +88,8 @@ export  async function GET() {
 
         }
         const user = await prisma.user.findUnique({where:{clerk_userId:clerkUserId}})
+        console.log("this is the userInfo", user)
+        
         if(!user){
             return NextResponse.json({
                 success:false,
@@ -111,7 +114,7 @@ export  async function GET() {
         })
         
     } catch (error) {
-        console.log()
+        console.log('this occur during scheduling', error)
 
         return NextResponse.json({
             success:false,

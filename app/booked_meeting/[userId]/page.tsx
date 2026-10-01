@@ -22,7 +22,7 @@ interface BookingSchema{
 }
 
 export default function BookedMeeting() {
-  const [bookings, setBooking] = useState<BookingSchema[]>()
+  const [bookings, setBooking] = useState<BookingSchema[]>([])
   const [error, setError] = useState<string | undefined>()
   const {openSignIn} = useClerk()
   const {isLoaded, isSignedIn} = useAuth()
@@ -39,7 +39,8 @@ export default function BookedMeeting() {
       async function getBooking() {      
       const response = await fetch('/api/schedule_booking')
       const data = await response.json()
-      setBooking(data.scheduledMeetings)
+      console.log('this is booking data', data)
+      setBooking(data.scheduledMeetings ?? [])
       }
       getBooking()
         
@@ -53,12 +54,13 @@ export default function BookedMeeting() {
 
 
   }, [])
+  console.log('this is the booking type', typeof bookings)
+  console.log('this is the booked meeting data', bookings)
   
   if(!isLoaded){
     return(
     <div className="h-[80vh] flex justify-center items-center">
          <Spinner/>
-
     </div>
     )
   }
@@ -83,7 +85,7 @@ export default function BookedMeeting() {
   }
 
 
-  if (bookings?.length === 0) {
+  if (bookings.length === 0) {
     return (
       <section className="min-h-[90vh] flex items-center justify-center px-4">
         <Card className="w-full max-w-2xl overflow-hidden">

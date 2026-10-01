@@ -3,7 +3,7 @@ import type { UserJSON } from "@clerk/backend";
 import prisma from "@/lib/prisma";
 import {Webhook} from 'svix'
 import { headers } from "next/headers";
-import { slidingWindowRateLimiter } from "@/proxy";
+//import { slidingWindowRateLimiter } from "@/proxy";
 import { NextRequest, NextResponse } from "next/server";
 const webhookSecret = process.env.CLERK_WEBHOOK_SECRET || ``
 async function validateRequest(request:NextRequest) {
@@ -20,7 +20,7 @@ async function validateRequest(request:NextRequest) {
 }
 export async function POST(request: NextRequest) {
   try {
-      await slidingWindowRateLimiter(request)
+      //await slidingWindowRateLimiter(request)
       const payload = await validateRequest(request)
       if (payload.type === "user.created") {
       const data = payload.data as UserJSON;

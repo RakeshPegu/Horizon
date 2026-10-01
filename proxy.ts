@@ -13,7 +13,7 @@ const ratelimit = new Ratelimit({
     analytics:true,
     prefix: "@upstash/ratelimit"
 })
-export async function slidingWindowRateLimiter(request:NextRequest) {
+async function slidingWindowRateLimiter(request:NextRequest) {
     const ip = request.headers.get('x-forwarded-for')?.split(", ")[0]?.trim() || 'unknown'
     if(ip === 'unknown'){
       return NextResponse.json({
@@ -33,17 +33,19 @@ export async function slidingWindowRateLimiter(request:NextRequest) {
       })
       
     }
-    return NextResponse.next()
+    return null
     
 }
 
-export default clerkMiddleware(async(auth, request)=>{
-  const ratelimitResponse = await slidingWindowRateLimiter(request)
-  if(ratelimitResponse){
-    return ratelimitResponse
-  }
-  return NextResponse.next()
-})
+export default clerkMiddleware(
+//   async(auth, request)=>{
+//   const ratelimitResponse = await slidingWindowRateLimiter(request)
+//   if(ratelimitResponse){
+//     return ratelimitResponse
+//   }
+//   return NextResponse.next()
+// }
+)
 export const config = {
   matcher: [
     // Skip Next.js internals and all static files, unless found in search params
