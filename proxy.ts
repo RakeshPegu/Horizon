@@ -1,4 +1,4 @@
-import { clerkMiddleware} from '@clerk/nextjs/server'
+import { clerkMiddleware, createRouteMatcher} from '@clerk/nextjs/server'
 
 import {Redis} from '@upstash/redis'
 import {Ratelimit} from '@upstash/ratelimit'
@@ -37,14 +37,24 @@ async function slidingWindowRateLimiter(request:NextRequest) {
     
 }
 
+const isPublicRoute = createRouteMatcher([
+   "/",
+   "/api/qualification(.*)"
+])
+
 export default clerkMiddleware(
-//   async(auth, request)=>{
+async(auth, request)=>{
 //   const ratelimitResponse = await slidingWindowRateLimiter(request)
 //   if(ratelimitResponse){
 //     return ratelimitResponse
 //   }
 //   return NextResponse.next()
-// }
+
+  if(!isPublicRoute){
+  await auth.protect()
+ }
+ }
+
 )
 export const config = {
   matcher: [
