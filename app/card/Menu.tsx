@@ -26,9 +26,6 @@ export default function MobileMenu({handleShowMenu}:HandleShowMenu){
             id:"service"
         },
         {
-            name:"Case studies",
-        },
-        {
             name:"About",
             id:'about'
         },

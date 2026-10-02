@@ -6,25 +6,29 @@ import MobileMenu from '../card/Menu';
 import { useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { useAuth } from '@clerk/nextjs';
+import { route } from 'sanity/router';
 
 export default function Navbar() {
   const pathName = usePathname()
   const router = useRouter()
   const [showMenu, setShowMenu] = useState(false)
   const {userId} = useAuth()
-  const handleClick = (id:string)=>{
-     if(pathName === '/'){
-       document.getElementById(id)?.scrollIntoView({behavior:"smooth"})
 
-     }
-     router.push('/')
-     const timer = setTimeout(() => {       
+  
+const handleClick = (id: string) => {
+  if (pathName === "/") {
+    document.getElementById(id)?.scrollIntoView({
+      behavior: "smooth",
+  
+    });
+  } 
+  router.push('/')
+  const timer = setTimeout(() => {       
         document.getElementById(id)?.scrollIntoView({behavior:"smooth"})      
      }, 500);
      return ()=>clearTimeout(timer)
 
-    
-  }
+};
   const menuLinks = [
     { name: "Home", id:"home" },
     { name: "Services", id:"service" }, 
