@@ -30,10 +30,23 @@ export default function Home(){
 
 
     }
-    
+  const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "InnovHubs",
+  url: "https://www.innovhubs.com",
+  logo: "https://www.innovhubs.com/logo.png",
+  description:
+    "InnovHubs builds modern business websites, custom web applications, dashboards, and n8n workflow automations.",
+};
 
   return(
       <> 
+        <script type="application/ld+json" 
+            dangerouslySetInnerHTML={{
+          __html: JSON.stringify(organizationSchema).replace(/</g, "\\u003c"),
+        }}
+        />
         <LazyLoaderSection>
         <Hero  handleFormState={handleBookBtnClick}/>
         </LazyLoaderSection>
@@ -47,10 +60,10 @@ export default function Home(){
         <Process/>
         </LazyLoaderSection>
         <LazyLoaderSection>
-        <Faq  handleFormState={handleBookBtnClick}/>
+        <Portfolio/>
         </LazyLoaderSection>
         <LazyLoaderSection>
-        <Portfolio/>
+        <Faq  handleFormState={handleBookBtnClick}/>
         </LazyLoaderSection>
     </>
 

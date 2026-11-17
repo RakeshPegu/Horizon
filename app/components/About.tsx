@@ -74,7 +74,7 @@ export default function About({handleFormState}:AboutType) {
         </div>
 
         {/* Right Column (Asymmetric Interactive Bento Grid) */}
-        <div className="w-full lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4 auto-rows-fr">
+        <div className="w-full lg:col-span-7  grid grid-cols-1 sm:grid-cols-2 gap-4 auto-rows-fr">
           {businessTypes.map((businessType, index) => {
             
             // The last item spans full width on desktop grids to create layout asymmetry

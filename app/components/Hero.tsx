@@ -8,23 +8,23 @@ export default function Hero({handleFormState}: HeroType){
 
     }
     return(
-    <section id='home' className='py-40 md:py-0  md:h-screen pt-24 flex md:mb-40 '>
+    <section id='home' className='md:relative py-40 md:py-0  md:h-screen pt-24 flex md:mb-40 '>
       {/* left section */}
-      <div className='flex flex-row md:py-30 '>
+      <div className='flex flex-row md:py-30 md:absolute md:left-30'>
       <div className='flex-1/2 flex flex-col gap-8 pl-2 sm:pl-10'>
-       <div className='flex flex-col gap-6 '>
-        <h1 className='text-6xl sm:text-7xl  max-w-120  '>
+       <div className='flex flex-col gap-6 md:gap-10 '>
+        <h1 className='text-6xl sm:text-7xl font-sans  max-w-120  '>
           Build smarter. Automate faster.
          </h1>
-        <p className='text-xl pl-2 max-w-150'>
+        <p className='text-xl pl-2 max-w-150 leading-8'>
            We help startups and small businesses build websites,
            automate workflows,
            and integrate AI-powered solutions that save 
            time and increase revenue.</p>
         </div>
         <div className='flex flex-row gap-4 pl-2 flex-wrap sm:gap-6'>
-        <Button className={ 'py-6 px-3 sm:px-6'} onClick={()=>handleFormState()}>Book a Free consultation</Button>
-        <Button className={'py-6 px-3 sm:px-6'} onClick={()=>handleExploreServiceBtnClick()}> Explore our services</Button>        
+        <Button className={ 'py-6 px-3 font-bold font-sans sm:px-6'} onClick={()=>handleFormState()}>Book a Free consultation</Button>
+        <Button className={'py-6 px-3 font-bold font-sans sm:px-6'} onClick={()=>handleExploreServiceBtnClick()}> Explore our services</Button>        
        </div>
        </div>
        <div>

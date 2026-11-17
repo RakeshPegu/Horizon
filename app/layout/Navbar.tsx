@@ -21,14 +21,15 @@ const handleClick = (id: string) => {
       behavior: "smooth",
   
     });
-  } 
+  }else{ 
   router.push('/')
   const timer = setTimeout(() => {       
         document.getElementById(id)?.scrollIntoView({behavior:"smooth"})      
      }, 500);
      return ()=>clearTimeout(timer)
-
+    }
 };
+
   const menuLinks = [
     { name: "Home", id:"home" },
     { name: "Services", id:"service" }, 
