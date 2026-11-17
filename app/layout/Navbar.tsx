@@ -53,8 +53,9 @@ const handleClick = (id: string) => {
   return (
     <nav className='flex flex-row    items-center fixed backdrop-blur-md top-0 left-0 z-50 text w-full justify-between px-20 md:px-4 lg:px-12 h-16 shadow-md'>
       {/* Brand Logo */}
-      <div className='relative right-16 md:right-0 font-bold text-xl tracking-wider '>
-        <span><a href={'/'}> InnovHubs</a></span>
+      <div className='relative right-16 md:right-0 font-bold text-xl tracking-wide flex flex-row items-center '>
+        <img src={'/logo.png'} width={100} height={100} alt='innovhubs logo' className='object-center object-cover '/>
+        <a href={'/'} className='absolute left-18'> InnovHubs</a>
       </div>
 
       {/* Navigation Links */}

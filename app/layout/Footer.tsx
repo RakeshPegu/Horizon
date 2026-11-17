@@ -80,9 +80,10 @@ export default function Footer() {
           
           {/* Column 1: Brand & Tagline */}
           <div className="lg:col-span-2 space-y-4">
-            <span className="text-2xl font-bold tracking-tight text-white block">
-              {footerData.brand.name}
-            </span>
+          <div className='relative right-10 font-bold text-xl tracking-wide flex flex-row items-center '>
+            <img src={'/logo.png'} width={100} height={100} alt='innovhubs logo' className='object-center object-cover '/>
+            <a href={'/'} className='absolute left-18'> InnovHubs</a>
+          </div>
             <p className="text-zinc-400 text-sm leading-relaxed max-w-sm">
               {footerData.brand.tagline}
             </p>
