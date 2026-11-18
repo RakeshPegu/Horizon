@@ -61,7 +61,7 @@ const handleClick = (id: string) => {
       {/* Navigation Links */}
       <ul className='flex-row items-center gap-6 lg:gap-10 hidden md:flex '>
         {menuLinks.map((link, indx) => (
-          <li key={indx} className='font-medium  transition-colors duration-200 cursor-pointer' onClick={()=>handleClick(link?.id!)}>
+          <li key={indx} className='font-medium  transition-colors text-fuchsia-300 duration-200 cursor-pointer' onClick={()=>handleClick(link?.id!)}>
             {link.name}
           </li>
         ))}
@@ -79,7 +79,7 @@ const handleClick = (id: string) => {
       <div className='hidden md:flex flex-row  items-center gap-6 lg:gap-16'>
         <Show when="signed-out">
           <SignInButton mode="modal">
-            <button className=" font-medium  transition-colors cursor-pointer">
+            <button className=" font-medium text-fuchsia-300 transition-colors cursor-pointer">
               Sign In
             </button>
           </SignInButton>

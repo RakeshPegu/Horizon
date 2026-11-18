@@ -50,10 +50,10 @@ export default function Footer() {
     legal: [
       { name: "Privacy Policy", path: "/privacy-policy" },
       { name: "Terms of Service", path: "/terms" },
-      { name: "Cookie Policy", path: "/cookie-policy" },
+    
     ],
     contact: {
-      email: "horizonlab@109.com",
+      email: "innovhubs722@gmail.com",
       location: "Guwahati, Assam, India",
     },
     copyright: `© ${new Date().getFullYear()} HorizonLab. All rights reserved.`,

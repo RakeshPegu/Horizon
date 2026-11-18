@@ -5,8 +5,8 @@ export default function robots():MetadataRoute.Robots {
     return {
         rules : {
             userAgent:"*",
-            allow:"/",
-            disallow: ['/api/']
+            allow:'/',
+            disallow: ['/booked_meeting/','/booking_consultation/', '/api/']
         },
         sitemap: 'https://www.innovhubs/sitemap.xml'
     }

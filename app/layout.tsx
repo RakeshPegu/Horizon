@@ -26,7 +26,9 @@ export const metadata: Metadata = {
 
   },
   metadataBase: new URL('https://www.innovhubs.com/'),
-  
+  icons:{
+    icon:'/logo.png',
+  },
   title: {
     default: "InnovHubs | Web Development & Automation Agency",
     template: "%s | InnovHubs",
